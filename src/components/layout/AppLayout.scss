@@ -1,0 +1,28 @@
+.layout__header{
+	height: 80px;
+	padding: 0;
+	@apply bg-zinc-800 border-b border-zinc-600;
+}
+
+.layout__content{
+	min-height: calc(100vh - 80px);
+	@apply bg-zinc-800
+}
+.layout__sidebar{
+	@apply bg-zinc-800 text-white p-2 border-r border-zinc-600;
+
+}
+
+.sidebar__logo{
+	margin-top: 10px;
+	display: flex;
+	align-items: center;
+	justify-content:center;
+	cursor: pointer;
+	img{
+		width: 40px;
+	}
+	h1{
+		font-size: 40px;
+	}
+}
