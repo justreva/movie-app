@@ -9,20 +9,28 @@
 	@apply bg-zinc-800
 }
 .layout__sidebar{
-	@apply bg-zinc-800 text-white p-2 border-r border-zinc-600;
-
+	@apply bg-zinc-800 text-white p-2 border-r border-zinc-600 font-semibold;
 }
 
 .sidebar__logo{
 	margin-top: 10px;
 	display: flex;
 	align-items: center;
-	justify-content:center;
 	cursor: pointer;
+	
 	img{
 		width: 40px;
 	}
 	h1{
 		font-size: 40px;
 	}
+}
+
+.sidebar-list{
+@apply text-zinc-500 text-xl mt-5;
+
+&__element{
+	display: flex;
+	gap: 5px;
+}
 }
