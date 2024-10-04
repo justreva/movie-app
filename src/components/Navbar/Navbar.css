@@ -1,0 +1,15 @@
+.main-nav{
+	@apply text-white bg-zinc-900 flex justify-center py-5
+}
+.main-nav__content{
+	@apply container flex justify-between items-center
+}
+.main-nav__content-logo{
+	@apply flex items-center w-[50px] text-xl font-medium cursor-pointer
+}
+.main-nav__content-menu{
+	@apply flex space-x-8 text-lg font-normal
+}
+.main-nav__content-elem{
+	@apply hover:text-red-900 transition ease-in-out delay-100
+}
