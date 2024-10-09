@@ -3,5 +3,8 @@
 }
 .content-wrap{
 	margin: 0 auto;
-	@apply container text-center text-3xl
+	@apply container
+}
+.title{
+@apply text-center text-2xl text-center mt-10 mb-10
 }

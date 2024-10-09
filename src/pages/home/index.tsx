@@ -1,13 +1,15 @@
-import "./Home.css"
+import "./Home.css";
 
 const Home = () => {
-	return (
-		<main className="content">
-			<div className="content-wrap">
-		  Welcome back, User. Here’s what you can watch…
-			</div>
-		</main>
-	)
-}
+  return (
+    <main className="content">
+      <div className="content-wrap">
+        <div className="title">
+          Welcome back, <i>User</i>. Here’s what you can watch…
+        </div>
+      </div>
+    </main>
+  );
+};
 
-export default Home
+export default Home;

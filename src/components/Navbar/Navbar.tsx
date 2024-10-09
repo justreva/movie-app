@@ -21,18 +21,9 @@ const Navbar = () => {
           <li className="main-nav__content-elem">
             <Link to="/lists">Lists</Link>
           </li>
-          <li className="main-nav__content-search">
-          <IoSearchSharp />
-
-          </li>
         </ul>
-        
-
-        <div className="main-nav__content-auth">
-					<Link to={"/auth"}>
-					<CgProfile className="w-[50px] h-[50px] border-2 rounded-full border-red-900"/>
-					</Link>
-          
+        <div className="main-nav__content-search">
+          <IoSearchSharp />
         </div>
       </div>
     </nav>

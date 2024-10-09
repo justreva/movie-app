@@ -1,5 +1,5 @@
 .main-nav {
-  @apply text-white bg-zinc-900 flex justify-center py-5;
+  @apply text-secondary bg-primary flex justify-center py-5;
 }
 .main-nav__content {
   @apply container flex justify-between items-center;
