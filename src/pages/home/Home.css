@@ -1,10 +1,20 @@
-.content{
-	@apply pt-[30px]
+.content {
+  @apply pt-[30px];
 }
-.content-wrap{
-	margin: 0 auto;
-	@apply container
+.content-wrap {
+  margin: 0 auto;
+  @apply container;
 }
-.title{
-@apply text-center text-2xl text-center mt-10 mb-10
+.title {
+  @apply text-center text-2xl text-center mt-10 mb-10;
+}
+
+.recent-films {
+ 
+}
+.recent-films__title{
+	@apply hover:text-active transition ease-in-out delay-[0.4] text-primary border-b border-primary
+}
+.recent-films-grid{
+	@apply grid grid-cols-6
 }
