@@ -2,8 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface FilmState {
-  countries: number[],
-  genres,
+  countries: string[],
+  genres:,
   order,
   type: string,
 }
