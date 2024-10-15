@@ -21,9 +21,12 @@ const Navbar = () => {
           <li className="main-nav__content-elem">
             <Link to="/lists">Lists</Link>
           </li>
+          <li className="main-nav__content-search">
+            <IoSearchSharp />
+          </li>
         </ul>
-        <div className="main-nav__content-search">
-          <IoSearchSharp />
+        <div className="main-nav__content-auth">
+          <Link to="/auth">Auth</Link>
         </div>
       </div>
     </nav>
