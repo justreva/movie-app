@@ -1,6 +1,5 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import { CgProfile } from "react-icons/cg";
 import { IoSearchSharp } from "react-icons/io5";
 const Navbar = () => {
   return (
@@ -19,14 +18,11 @@ const Navbar = () => {
             <Link to="/serials">Serials</Link>
           </li>
           <li className="main-nav__content-elem">
-            <Link to="/lists">Lists</Link>
-          </li>
-          <li className="main-nav__content-search">
-            <IoSearchSharp />
+            <Link to="/favorites">Favorites</Link>
           </li>
         </ul>
-        <div className="main-nav__content-auth">
-          <Link to="/auth">Auth</Link>
+        <div className="main-nav__content-search">
+          <IoSearchSharp />
         </div>
       </div>
     </nav>
