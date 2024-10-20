@@ -11,5 +11,9 @@ body{
 	line-height: 1.5;
 }
 :root{
-	@apply bg-secondary
+	@apply bg-secondary ;
+}
+
+.container-content{
+	@apply container mx-auto
 }
