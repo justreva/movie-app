@@ -25,7 +25,7 @@ const Slider = ({ slides }) => {
                   <FaStar size={24} />
                   <FaStar size={24} />
                 </div>
-                <FaHeart size={24} />
+                <FaHeart size={24} className="hover:text-active"/>
               </div>
             </div>
           </SwiperSlide>
