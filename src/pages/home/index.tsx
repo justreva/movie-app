@@ -1,14 +1,13 @@
 import { useQuery } from "react-query";
 import { fetchMoviesInTheaters } from "../../api/tmdb";
 import "./Home.css";
-import FilmCard from "../../components/FilmCard/FilmCard";
-
+import Slider from "../../components/Slider/Slider";
 const Home = () => {
   const { data, error, isLoading } = useQuery(
     "movieNowPlaying",
     fetchMoviesInTheaters
   );
-  console.log(data?.data)
+  const movies = data?.data.results || []
   return (
     <main className="content">
       <div className="title">
@@ -22,11 +21,13 @@ const Home = () => {
           </a>
         </div>
 
-        <ul className="recent-films-grid">
+        {/* <ul className="recent-films-grid">
           {data?.data.results.map((movie) => (
             <FilmCard key={movie.id} movie={movie} />
           ))}
-        </ul>
+        </ul> */}
+         <Slider slides={movies}/> 
+        
       </div>
     </main>
   );

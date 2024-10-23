@@ -1,4 +1,4 @@
-const FilmCard = ({ movie }) => {
+const MovieCard = ({ movie }) => {
   return (
     <div>
       <img
@@ -10,4 +10,4 @@ const FilmCard = ({ movie }) => {
   );
 };
 
-export default FilmCard;
+export default MovieCard;
