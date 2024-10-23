@@ -1,6 +1,7 @@
 import "./Navbar.css";
+import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
-import { IoSearchSharp } from "react-icons/io5";
+
 const Navbar = () => {
   return (
     <nav className="main-nav">
@@ -21,9 +22,8 @@ const Navbar = () => {
             <Link to="/favorites">Favorites</Link>
           </li>
         </ul>
-        <div className="main-nav__content-search">
-          <IoSearchSharp />
-        </div>
+
+        <SearchBar />
       </div>
     </nav>
   );

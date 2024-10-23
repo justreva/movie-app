@@ -13,6 +13,4 @@
 .main-nav__content-elem {
   @apply hover:text-active transition ease-in-out delay-[0.4];
 }
-.main-nav__content-search {
-  @apply flex items-center justify-center cursor-pointer hover:text-active transition ease-in-out delay-[0.4];
-}
+
