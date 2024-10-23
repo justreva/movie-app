@@ -6,11 +6,9 @@
   @apply text-center text-2xl text-center mt-10 mb-10;
 }
 
-.recent-films {
- 
-}
+
 .recent-films__title{
-	@apply hover:text-active transition ease-in-out delay-[0.4] text-primary border-b border-primary text-lg
+	@apply text-primary border-b border-primary text-xl
 }
 .recent-films-grid{
 	@apply grid grid-cols-6

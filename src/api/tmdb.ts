@@ -14,12 +14,11 @@ export const tmdbApi = axios.create({
   },
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYTdiYjAzOTZmMjQzMWExYjhmMGU3M2ZjMjEyMDVlNiIsIm5iZiI6MTcyOTY4ODU2NC40NDc2MDgsInN1YiI6IjY1ZWYzMDU2YWY1OGNiMDE4NjJiZTU0ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.iAJJlc9oZUKmb0bL6ENm6O9h3aV_BmSLToU8VNqhvwU",
+    Authorization: API_TOKEN,
   },
 });
 
-export const fetchMoviesInTheaters = () => tmdbApi.get('/movie/now_playing');
+export const fetchMoviesInTheaters = () => tmdbApi.get("/movie/now_playing");
 
 export const fetchMovieDetails = (id: string): Promise<AxiosResponse<Movie>> =>
   tmdbApi.get(`/movie/${id}`);
