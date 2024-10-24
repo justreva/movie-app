@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import { fetchMoviesInTheaters } from "../../api/tmdb";
 import "./Home.css";
 import Slider from "../../components/Slider/Slider";
-import { useState } from "react";
+
 const Home = () => {
 
   const { data, error, isLoading } = useQuery(

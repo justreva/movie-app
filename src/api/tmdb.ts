@@ -20,5 +20,5 @@ export const tmdbApi = axios.create({
 
 export const fetchMoviesInTheaters = () => tmdbApi.get("/movie/now_playing");
 
-export const fetchMovieDetails = (id: string): Promise<AxiosResponse<Movie>> =>
+export const fetchMovieDetails = (id: number): Promise<AxiosResponse<Movie>> =>
   tmdbApi.get(`/movie/${id}`);
