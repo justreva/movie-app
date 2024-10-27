@@ -9,7 +9,8 @@ export default {
       colors: {
         primary: "#18181b",
         secondary: "#d4d4d8",
-        active: "#991b1b"
+        active: "#991b1b",
+        bc: "#52525b"
       }
     },
   },

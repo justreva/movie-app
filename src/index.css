@@ -13,7 +13,15 @@ body{
 :root{
 	@apply bg-zinc-800 ;
 }
-
-.container-content{
-	@apply container mx-auto
+.overlay-film-cover{
+	position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 20%,
+    theme('colors.primary')
+  );
 }

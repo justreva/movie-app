@@ -3,12 +3,12 @@
 }
 
 .title {
-  @apply text-center text-2xl text-center mt-10 mb-10;
+  @apply text-center text-3xl text-center mt-10 mb-10 text-secondary ;
 }
 
 
 .recent-films__title{
-	@apply text-primary border-b border-primary text-xl
+	@apply text-secondary border-b border-secondary text-xl pb-1
 }
 .recent-films-grid{
 	@apply grid grid-cols-6

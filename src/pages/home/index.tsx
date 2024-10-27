@@ -12,7 +12,7 @@ const Home = () => {
 
   const moviesInTheaters = data?.data.results || [];
   return (
-    <main className="content">
+    <main className="content container mx-auto">
       <div className="title">
         Welcome back, <i>User</i>. Here’s what you can watch…
       </div>

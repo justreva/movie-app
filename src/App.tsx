@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
-import MovieDetails from "./pages/MovieDetails.tsx/MoveiCard";
+import MovieDetails from "./pages/MovieDetails.tsx/MovieDetails";
 import "./index.css";
 const App = () => {
   return (
     <>
       <Router>
         <Navbar />
-        <div className="container-content">
+        
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/movies" element={<h1>Movies</h1>} />
@@ -17,7 +17,7 @@ const App = () => {
             <Route path="*" element={<h1>Error</h1>} />
             <Route path="/movie/:id" element={<MovieDetails />} />
           </Routes>
-        </div>
+
       </Router>
     </>
   );
