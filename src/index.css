@@ -2,26 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-	height: 100%;
+body {
+  height: 100%;
 }
-:root{
-	font-family: "Fredoka", sans-serif;
-	font-weight: 400;
-	line-height: 1.5;
+:root {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
 }
-:root{
-	@apply bg-zinc-800 ;
+:root {
+  @apply bg-zinc-800;
 }
-.overlay-film-cover{
-	position: absolute;
+.overlay-film-left {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(to left, transparent 5%, theme("colors.primary"));
+}
+.overlay-film-right {
+  position: absolute;
+  z-index: -1;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   background: linear-gradient(
-    to bottom,
-    transparent 20%,
-    theme('colors.primary')
+    to right,
+    transparent 5%,
+    theme("colors.primary")
   );
 }
