@@ -10,7 +10,8 @@ export default {
         primary: "#18181b",
         secondary: "#d4d4d8",
         active: "#991b1b",
-        bc: "#52525b"
+        description: "#52525b",
+        border: "#27272a",
       }
     },
   },

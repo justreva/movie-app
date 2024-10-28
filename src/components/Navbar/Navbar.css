@@ -1,6 +1,5 @@
 .main-nav {
-  z-index: 1;
-  @apply text-secondary bg-primary flex justify-center py-4;
+  @apply text-secondary bg-primary flex justify-center py-4 border-b border-border; 
 }
 .main-nav__content {
   @apply container flex justify-between items-center;

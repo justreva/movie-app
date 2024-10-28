@@ -16,32 +16,38 @@ const MovieDetails = () => {
 
   return (
     <>
-     <div className="overlay-film-right"></div>
-     <div className="overlay-film-left"></div>
-     
-      <div className="h-[400px] border border-bc">
+      <div className="h-[400px] left-0 right-0 top-0 relative">
+        <div className="overlay-film-backdrop"></div>
         <img
           src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
           alt="backdrop"
           className="w-full h-full object-cover"
         />
-       
       </div>
-      <div className="container mx-auto ">
-        <div className="">
-          <img
-            src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-            alt=""
-            className="max-w-[250px] border border-bc rounded-lg "
-          />
-          <div className="about-movie flex items-center">
+
+      <div className="container mx-auto">
+        <div className="flex justify-between">
+          <div className="poster">
+            <img
+              src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+              alt=""
+              className="max-w-[250px] border border-border shadow-lg rounded-lg "
+            />
+          </div>
+
+          <div className="about-movie flex ">
             <h1 className="text-secondary text-2xl font-medium">
               {movie.title}
             </h1>
-            <h2 className="text-xl ml-2 text-secondary">{getYear(movie.release_date)}</h2>
+            <h2 className="text-xl ml-2 text-secondary">
+              {getYear(movie.release_date)}
+            </h2>
           </div>
+
+          <div>Something</div>
         </div>
       </div>
+
     </>
   );
 };

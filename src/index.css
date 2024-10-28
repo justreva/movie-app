@@ -11,27 +11,18 @@ body {
   line-height: 1.5;
 }
 :root {
-  @apply bg-zinc-800;
+  @apply bg-primary;
 }
-.overlay-film-left {
+
+.overlay-film-backdrop{
   position: absolute;
-  z-index: -1;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: linear-gradient(to left, transparent 5%, theme("colors.primary"));
-}
-.overlay-film-right {
-  position: absolute;
-  z-index: -1;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   background: linear-gradient(
-    to right,
-    transparent 5%,
+    to bottom,
+    transparent 25%,
     theme("colors.primary")
   );
 }
