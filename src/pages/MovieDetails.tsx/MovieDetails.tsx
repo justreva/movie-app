@@ -10,16 +10,39 @@ const MovieDetails = () => {
   const { data, error, isLoading } = useQuery(["movieDetails", id], () =>
     fetchMovieDetails(Number(id))
   );
-  const movie = data?.data || [];
+  const movie: Movie | undefined = data?.data;
   console.log(data);
 
   const getYear = (date: string) => {
     return new Date(date).getFullYear();
   };
 
+  const ratingStyle = (vote_average: number) => {
+    const rating = vote_average.toFixed(1);
+    if (Number(rating) >= 7)
+      return (
+        <span className="text-2xl text-secondary bg-green-700 py-1 px-2 rounded-lg font-medium">
+          {rating}
+        </span>
+      );
+    if (Number(rating) < 7 && Number(rating) >= 6)
+      return (
+        <span className="text-2xl text-secondary bg-orange-500 py-1 px-2 rounded-lg font-medium">
+          {rating}
+        </span>
+      );
+    if (Number(rating) < 6)
+      return (
+        <span className="text-2xl text-secondary bg-red-500 py-1 px-2 rounded-lg font-medium">
+          {rating}
+        </span>
+      );
+    else return "0";
+  };
+
   if (isLoading) return <Loading></Loading>;
   if (error) return;
-  if(!data) return "Not found";
+  if (!data) return "Not found";
   return (
     <>
       <div className="h-[400px] left-0 right-0 top-0 relative">
@@ -32,7 +55,7 @@ const MovieDetails = () => {
       </div>
 
       <div className="container mx-auto mt-2">
-        <div className="flex items-start">
+        <div className="flex justify-evenly">
           <div className="poster">
             <img
               src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
@@ -44,7 +67,7 @@ const MovieDetails = () => {
             </div>
           </div>
 
-          <div className="about-movie w-[500px] ml-[50px]">
+          <div className="about-movie w-[500px]">
             <h1 className="text-secondary text-3xl font-medium">
               {movie.title}
             </h1>
@@ -56,7 +79,16 @@ const MovieDetails = () => {
             </h2>
           </div>
 
-          <div className="other-info"></div>
+          <div className="other-info">
+            <div>{ratingStyle(Number(movie.vote_average))}</div>
+
+            <ul className="mt-[10px] space-y-1">
+              {movie.genres.map((genre) => (
+                <li className="text-secondary bg-border text-center py-1 px-2 rounded-lg " key={genre.id}>{genre.name}</li>
+              ))}
+            </ul>
+
+          </div>
         </div>
       </div>
     </>

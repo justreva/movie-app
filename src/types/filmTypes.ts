@@ -1,3 +1,8 @@
+
+export interface Genre {
+  genre_id: number;
+  name: string;
+}
 export interface Movie {
   id: number;
   title: string;
@@ -6,6 +11,8 @@ export interface Movie {
   backdrop_path: string | null;
   release_date: string;
   vote_average: number;
+  tagline: string;
+  genres: Genre[]
 }
 export interface Serial {
   id: number;
@@ -15,9 +22,6 @@ export interface Serial {
   backdrop_path: string | null;
   release_date: string;
   vote_average: number;
-}
-
-export interface Genre {
-  genre_id: number;
-  name: string;
+  tagline: string;
+  genres: Genre[];
 }

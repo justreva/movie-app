@@ -2,6 +2,8 @@ import { useQuery } from "react-query";
 import { fetchMoviesInTheaters } from "../../api/tmdb";
 import "./Home.css";
 import Slider from "../../components/Slider/Slider";
+import Loading from "../../components/Loading/Loading";
+import Error from "../../components/Error/Error";
 
 const Home = () => {
 
@@ -9,8 +11,10 @@ const Home = () => {
     "movieNowPlaying",
     fetchMoviesInTheaters
   );
-
   const moviesInTheaters = data?.data.results || [];
+
+  if(isLoading) return Loading
+  if(error) return Error
   return (
     <main className="content container mx-auto">
       <div className="title">
