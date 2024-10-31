@@ -2,8 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { FaStar } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
+import Actions from "../Actions/Actions";
 import { Movie } from "../../types/filmTypes";
 import { Link } from "react-router-dom";
 
@@ -26,14 +25,7 @@ const Slider = ({ slides }: SliderProps) => {
                 />
               </Link>
               <div className="actions hidden absolute space-x-2 bg-primary p-1 rounded-lg bg-opacity-80 top-[90%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:flex group-focus-within:flex text-secondary">
-                <div className="rate flex">
-                  <FaStar size={20} />
-                  <FaStar size={20} />
-                  <FaStar size={20} />
-                  <FaStar size={20} />
-                  <FaStar size={20} />
-                </div>
-                <FaHeart size={20} className="hover:text-active" />
+                <Actions />
               </div>
             </div>
           </SwiperSlide>

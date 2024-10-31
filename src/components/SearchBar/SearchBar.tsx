@@ -4,7 +4,7 @@ const SearchBar = () => {
     <div className="flex items-center border-b-[1.5px] border-secondary p-1 ">
       <input
         type="text"
-        className="bg-transparent outline-0 placeholder:text-bc"
+        className="bg-transparent outline-0 placeholder:text-description"
         placeholder="Search..."
       />
       <IoSearchSharp />
