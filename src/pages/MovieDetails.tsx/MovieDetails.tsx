@@ -1,17 +1,25 @@
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { fetchMovieDetails } from "../../api/tmdb";
+import { fetchMovieCast, fetchMovieDetails } from "../../api/tmdb";
 import Actions from "../../components/Actions/Actions";
-import { Movie } from "../../types/filmTypes";
+import { Movie, Cast } from "../../types/filmTypes";
 import Loading from "../../components/Loading/Loading";
+import CastCard from "../../components/CastCard/CastCard";
+import CastSlider from "../../components/CastSlider/CastSlider";
 
 const MovieDetails = () => {
   const { id } = useParams<{ id: string }>();
-  const { data, error, isLoading } = useQuery(["movieDetails", id], () =>
+  const movieDetailsQuery = useQuery(["movieDetails", id], () =>
     fetchMovieDetails(Number(id))
   );
-  const movie: Movie | undefined = data?.data;
-  console.log(data);
+
+  const movieCastQuery = useQuery(["movieCast", id], () =>
+    fetchMovieCast(Number(id))
+  );
+
+  const movie: Movie | undefined = movieDetailsQuery.data?.data;
+  const cast: Cast[] | [] = movieCastQuery.data?.data.cast;
+  console.log(movieCastQuery.data);
 
   const getYear = (date: string) => {
     return new Date(date).getFullYear();
@@ -40,9 +48,9 @@ const MovieDetails = () => {
     else return "0";
   };
 
-  if (isLoading) return <Loading></Loading>;
-  if (error) return;
-  if (!data) return "Not found";
+  if (movieDetailsQuery.isLoading) return <Loading></Loading>;
+  if (movieDetailsQuery.error) return;
+  if (!movieDetailsQuery.data) return "Not found";
   return (
     <>
       <div className="h-[400px] left-0 right-0 top-0 relative">
@@ -67,7 +75,7 @@ const MovieDetails = () => {
             </div>
           </div>
 
-          <div className="about-movie w-[500px]">
+          <div className="about-movie  w-[500px]">
             <h1 className="text-secondary text-3xl font-medium ">
               {movie.title}
             </h1>
@@ -77,6 +85,9 @@ const MovieDetails = () => {
             <h2 className="text-base mt-[10px] text-secondary">
               {movie.overview}
             </h2>
+            
+              <CastSlider casts={cast} />
+           
           </div>
 
           <div className="other-info">
@@ -84,10 +95,14 @@ const MovieDetails = () => {
 
             <ul className="mt-[10px] space-y-1">
               {movie.genres.map((genre) => (
-                <li className="text-secondary text-center py-1 px-2 rounded-lg border border-border shadow-lg" key={genre.id}>{genre.name}</li>
+                <li
+                  className="text-secondary text-center py-1 px-2 rounded-lg border border-border shadow-lg"
+                  key={genre.id}
+                >
+                  {genre.name}
+                </li>
               ))}
             </ul>
-
           </div>
         </div>
       </div>

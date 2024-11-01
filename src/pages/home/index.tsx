@@ -1,11 +1,11 @@
 import { useQuery } from "react-query";
 import { fetchMoviesInTheaters } from "../../api/tmdb";
 import "./Home.css";
-import Slider from "../../components/Slider/Slider";
+
 import Loading from "../../components/Loading/Loading";
 import Error from "../../components/Error/Error";
 import { Movie } from "../../types/filmTypes";
-import MovieCard from "../../components/MovieCard/MovieCard";
+import MovieSlider from "../../components/MovieSlider/MovieSlider";
 
 const Home = () => {
 
@@ -26,10 +26,7 @@ const Home = () => {
       <div className="recent-films">
         <div className="recent-films__title">Now playing in theatres</div>
         <div className="mt-2">
-          {moviesInTheaters.map((movie) => {
-            return <MovieCard movie={movie}/>
-          }
-          )}
+          <MovieSlider movies={moviesInTheaters} />
         </div>
       </div>
     </main>
