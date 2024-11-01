@@ -13,8 +13,8 @@ const Home = () => {
   );
   const moviesInTheaters = data?.data.results || [];
 
-  if(isLoading) return Loading
-  if(error) return Error
+  if(isLoading) return <Loading></Loading> 
+  if(error) return <Error></Error>
   return (
     <main className="content container mx-auto">
       <div className="title">
