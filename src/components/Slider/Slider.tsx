@@ -16,7 +16,7 @@ const Slider = ({ slides }: SliderProps) => {
       <Swiper spaceBetween={10} slidesPerView={6} modules={[Pagination]}>
         {slides.map((movie: Movie) => (
           <SwiperSlide key={movie.id}>
-            <div className="w-[100%] h-[370px] border-2 border-primary rounded-lg overflow-hidden hover:border-secondary duration-150 relative group cursor-pointer">
+            <div className="w-[100%] h-[370px] border border-border rounded-lg shadow-lg overflow-hidden hover:border-secondary duration-150 relative group cursor-pointer">
               <Link to={`/movie/${movie.id}`}>
                 <img
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

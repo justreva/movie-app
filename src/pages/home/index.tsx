@@ -4,6 +4,8 @@ import "./Home.css";
 import Slider from "../../components/Slider/Slider";
 import Loading from "../../components/Loading/Loading";
 import Error from "../../components/Error/Error";
+import { Movie } from "../../types/filmTypes";
+import MovieCard from "../../components/MovieCard/MovieCard";
 
 const Home = () => {
 
@@ -11,7 +13,7 @@ const Home = () => {
     "movieNowPlaying",
     fetchMoviesInTheaters
   );
-  const moviesInTheaters = data?.data.results || [];
+  const moviesInTheaters : Movie[] | [] = data?.data.results;
 
   if(isLoading) return <Loading></Loading> 
   if(error) return <Error></Error>
@@ -24,7 +26,10 @@ const Home = () => {
       <div className="recent-films">
         <div className="recent-films__title">Now playing in theatres</div>
         <div className="mt-2">
-          <Slider slides={moviesInTheaters} />
+          {moviesInTheaters.map((movie) => {
+            return <MovieCard movie={movie}/>
+          }
+          )}
         </div>
       </div>
     </main>

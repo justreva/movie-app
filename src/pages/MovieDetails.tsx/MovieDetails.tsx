@@ -68,7 +68,7 @@ const MovieDetails = () => {
           </div>
 
           <div className="about-movie w-[500px]">
-            <h1 className="text-secondary text-3xl font-medium">
+            <h1 className="text-secondary text-3xl font-medium ">
               {movie.title}
             </h1>
             <h2 className="text-lg italic mt-[10px] text-description">
@@ -84,7 +84,7 @@ const MovieDetails = () => {
 
             <ul className="mt-[10px] space-y-1">
               {movie.genres.map((genre) => (
-                <li className="text-secondary bg-border text-center py-1 px-2 rounded-lg " key={genre.id}>{genre.name}</li>
+                <li className="text-secondary text-center py-1 px-2 rounded-lg border border-border shadow-lg" key={genre.id}>{genre.name}</li>
               ))}
             </ul>
 
