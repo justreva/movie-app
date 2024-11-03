@@ -48,34 +48,43 @@ const MovieDetails = () => {
     else return "0";
   };
 
-  if (movieDetailsQuery.isLoading) return <Loading></Loading>;
   if (movieDetailsQuery.error) return;
   if (!movieDetailsQuery.data) return "Not found";
   return (
     <>
       <div className="h-[400px] left-0 right-0 top-0 relative">
         <div className="overlay-film-backdrop"></div>
-        <img
-          src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-          alt="backdrop"
-          className="w-full h-full object-cover"
-        />
+        {movieDetailsQuery.isLoading ? (
+          <div className="w-full h-full animate-pulse object-cover bg-border"></div>
+        ) : (
+          <img
+            src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+            alt="backdrop"
+            className="w-full h-full object-cover"
+          />
+        )}
       </div>
 
-      <div className="container mx-auto mt-2">
+      <div className="container mx-auto mt-5">
         <div className="flex justify-evenly">
           <div className="poster">
-            <img
-              src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-              alt=""
-              className="max-w-[240px] border border-border shadow-lg rounded-lg "
-            />
+            {movieDetailsQuery.isLoading ? (
+              <div className="h-[360px] w-[240px] animate-pulse border border-border shadow-lg rounded-lg bg-border"></div>
+              
+            ) : (
+              <img
+                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                alt=""
+                className="h-[360px] max-w-[240px] border border-border shadow-lg rounded-lg "
+              />
+            )}
+
             <div className="mt-3">
               <Actions />
             </div>
           </div>
 
-          <div className="about-movie  w-[500px]">
+          <div className="about-movie  w-[500px] text-pretty">
             <h1 className="text-secondary text-3xl font-medium ">
               {movie.title}
             </h1>
@@ -85,9 +94,8 @@ const MovieDetails = () => {
             <h2 className="text-base mt-[10px] text-secondary">
               {movie.overview}
             </h2>
-            
-              <CastSlider casts={cast} />
-           
+
+            <CastSlider casts={cast} />
           </div>
 
           <div className="other-info">

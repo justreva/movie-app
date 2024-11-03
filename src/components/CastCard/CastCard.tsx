@@ -14,7 +14,7 @@ const CastCard = ({ cast }: CastCardProps) => {
           alt=""
         />
       ) : (
-        <div className="bg-description w-full h-full animate-pulse"></div>
+        <div className="bg-border w-full h-full animate-pulse"></div>
       )}
 
       <div
