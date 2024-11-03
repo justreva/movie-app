@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { fetchMovieCast, fetchMovieDetails } from "../../api/tmdb";
+import { fetchMovieCast, fetchMovieDetails, fetchRecommendations } from "../../api/tmdb";
 import Actions from "../../components/Actions/Actions";
 import { Movie, Cast } from "../../types/filmTypes";
 import Loading from "../../components/Loading/Loading";
@@ -9,6 +9,7 @@ import CastSlider from "../../components/CastSlider/CastSlider";
 
 const MovieDetails = () => {
   const { id } = useParams<{ id: string }>();
+
   const movieDetailsQuery = useQuery(["movieDetails", id], () =>
     fetchMovieDetails(Number(id))
   );
@@ -17,9 +18,12 @@ const MovieDetails = () => {
     fetchMovieCast(Number(id))
   );
 
+  const recommendationQuery = useQuery(["movieRecommendation", id], () => 
+  fetchRecommendations(Number(id)))
+
   const movie: Movie | undefined = movieDetailsQuery.data?.data;
   const cast: Cast[] | [] = movieCastQuery.data?.data.cast;
-  console.log(movieCastQuery.data);
+
 
   const getYear = (date: string) => {
     return new Date(date).getFullYear();
@@ -48,37 +52,28 @@ const MovieDetails = () => {
     else return "0";
   };
 
+  if (movieDetailsQuery.isLoading) return <Loading></Loading>;
   if (movieDetailsQuery.error) return;
   if (!movieDetailsQuery.data) return "Not found";
   return (
     <>
       <div className="h-[400px] left-0 right-0 top-0 relative">
         <div className="overlay-film-backdrop"></div>
-        {movieDetailsQuery.isLoading ? (
-          <div className="w-full h-full animate-pulse object-cover bg-border"></div>
-        ) : (
-          <img
-            src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-            alt="backdrop"
-            className="w-full h-full object-cover"
-          />
-        )}
+        <img
+          src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+          alt="backdrop"
+          className="w-full h-full object-cover"
+        />
       </div>
 
-      <div className="container mx-auto mt-5">
+      <div className="container mx-auto mt-2">
         <div className="flex justify-evenly">
           <div className="poster">
-            {movieDetailsQuery.isLoading ? (
-              <div className="h-[360px] w-[240px] animate-pulse border border-border shadow-lg rounded-lg bg-border"></div>
-              
-            ) : (
-              <img
-                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                alt=""
-                className="h-[360px] max-w-[240px] border border-border shadow-lg rounded-lg "
-              />
-            )}
-
+            <img
+              src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+              alt=""
+              className="max-w-[240px] border border-border shadow-lg rounded-lg "
+            />
             <div className="mt-3">
               <Actions />
             </div>
@@ -94,8 +89,9 @@ const MovieDetails = () => {
             <h2 className="text-base mt-[10px] text-secondary">
               {movie.overview}
             </h2>
-
-            <CastSlider casts={cast} />
+        
+              <CastSlider casts={cast} />
+            
           </div>
 
           <div className="other-info">
