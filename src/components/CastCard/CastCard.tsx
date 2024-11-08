@@ -6,23 +6,22 @@ interface CastCardProps {
 
 const CastCard = ({ cast }: CastCardProps) => {
   return (
-    <div className="overflow-hidden border border-border rounded-lg shadow-lg w-[120px] h-[180px] mt-5 hover:border-secondary duration-150 relative group cursor-pointer">
+    <div className="overflow-hidden border border-border rounded-lg shadow-lg w-[120px] h-[180px] hover:border-secondary  duration-150 relative group cursor-pointer">
       {cast.profile_path ? (
-        <img
-          src={`https://image.tmdb.org/t/p/original/${cast.profile_path}`}
-          className=""
-          alt=""
-        />
+       
+          <img
+            src={`https://image.tmdb.org/t/p/original/${cast.profile_path}`}
+            className="h-full w-full"
+            alt=""
+          />
+        
       ) : (
         <div className="bg-border w-full h-full animate-pulse"></div>
       )}
 
-      <div
-        className="actions hidden absolute space-x-2 bg-primary p-1 rounded-lg bg-opacity-80 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:block group-focus-within:block text-secondary 
-		h-full w-full space-y-1 "
-      >
-        <h1 className="text-nowrap text-center text-sm">{cast.name}</h1>
-        <h1 className="border-t border-secondary text-wrap text-center text-sm">
+      <div className="actions hidden absolute w-[90%] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] p-2 rounded-lg bg-opacity-80 group-hover:block group-focus-within:block text-white space-y-1 my-auto bg-black">
+        <h1 className="text-center text-base">{cast.name}</h1>
+        <h1 className="border-t border-secondary text-center text-base">
           {cast.character}
         </h1>
       </div>

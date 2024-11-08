@@ -1,11 +1,15 @@
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { fetchMovieCast, fetchMovieDetails, fetchRecommendations } from "../../api/tmdb";
+import {
+  fetchMovieCast,
+  fetchMovieDetails,
+  fetchRecommendations,
+} from "../../api/tmdb";
 import Actions from "../../components/Actions/Actions";
 import { Movie, Cast } from "../../types/filmTypes";
 import Loading from "../../components/Loading/Loading";
-import CastCard from "../../components/CastCard/CastCard";
 import CastSlider from "../../components/CastSlider/CastSlider";
+import MovieSlider from "../../components/MovieSlider/MovieSlider";
 
 const MovieDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -18,12 +22,14 @@ const MovieDetails = () => {
     fetchMovieCast(Number(id))
   );
 
-  const recommendationQuery = useQuery(["movieRecommendation", id], () => 
-  fetchRecommendations(Number(id)))
+  const recommendationQuery = useQuery(["movieRecommendation", id], () =>
+    fetchRecommendations(Number(id))
+  );
 
   const movie: Movie | undefined = movieDetailsQuery.data?.data;
   const cast: Cast[] | [] = movieCastQuery.data?.data.cast;
-
+  const recommendationMovies: Movie[] | [] =
+    recommendationQuery.data?.data.results;
 
   const getYear = (date: string) => {
     return new Date(date).getFullYear();
@@ -66,8 +72,8 @@ const MovieDetails = () => {
         />
       </div>
 
-      <div className="container mx-auto mt-2">
-        <div className="flex justify-evenly">
+      <div className="container mt-2">
+        <div className="flex justify-between">
           <div className="poster">
             <img
               src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
@@ -79,25 +85,22 @@ const MovieDetails = () => {
             </div>
           </div>
 
-          <div className="about-movie  w-[500px] text-pretty">
-            <h1 className="text-secondary text-3xl font-medium ">
-              {movie.title}
-            </h1>
-            <h2 className="text-lg italic mt-[10px] text-description">
-              {movie.tagline}
-            </h2>
-            <h2 className="text-base mt-[10px] text-secondary">
-              {movie.overview}
-            </h2>
-        
-              <CastSlider casts={cast} />
-            
+          <div className="about-movie w-[500px] text-pretty text-secondary">
+            <div>
+              <h1 className="text-3xl font-medium ">{movie?.title}</h1>
+              <h2 className="mt-2">{getYear(movie.release_date)}</h2>
+              <h2 className="text-lg italic mt-2 text-description">
+                {movie?.tagline}
+              </h2>
+              <h2 className="text-base mt-4">{movie.overview}</h2>
+            </div>
+            <div>{cast ? <CastSlider casts={cast} /> : "Loading"}</div>
           </div>
 
           <div className="other-info">
             <div>{ratingStyle(Number(movie.vote_average))}</div>
 
-            <ul className="mt-[10px] space-y-1">
+            <ul className="mt-[10px] space-y-2">
               {movie.genres.map((genre) => (
                 <li
                   className="text-secondary text-center py-1 px-2 rounded-lg border border-border shadow-lg"
@@ -108,6 +111,14 @@ const MovieDetails = () => {
               ))}
             </ul>
           </div>
+        </div>
+
+        <div className="my-10">
+          <h1 className="text-xl font-medium text-secondary border-b pb-1 mb-2">
+            Recommendations
+          </h1>
+          {recommendationMovies ? <MovieSlider movies={recommendationMovies} /> : "Loading"}
+          
         </div>
       </div>
     </>

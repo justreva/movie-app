@@ -13,11 +13,11 @@ interface SliderProps<T> {
 const Slider = <T,>({
   items,
   renderItem,
-  spaceBetween = 10,
-  slidesPerView = 6,
+  spaceBetween = 15,
+  slidesPerView = 7,
   responsive = {
-    640: { slidesPerView: 2 },
-    768: { slidesPerView: 3 },
+    640: { slidesPerView: 3 },
+    768: { slidesPerView: 4 },
     1024: { slidesPerView: 6 },
   },
 }: SliderProps<T>) => {
@@ -29,7 +29,7 @@ const Slider = <T,>({
         breakpoints={responsive}
       >
         {items.map((item, index) => 
-          <SwiperSlide key={index}>{renderItem(item)}</SwiperSlide>
+          <SwiperSlide key={index} >{renderItem(item)}</SwiperSlide>
         )}
       </Swiper>
     </>

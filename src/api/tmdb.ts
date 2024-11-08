@@ -3,7 +3,7 @@ import { Movie } from "../types/filmTypes";
 
 const BASE_API_URL = "https://api.themoviedb.org/3/";
 
-const API_TOKEN = "3a7bb0396f2431a1b8f0e73fc21205e6";
+const API_TOKEN = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYTdiYjAzOTZmMjQzMWExYjhmMGU3M2ZjMjEyMDVlNiIsIm5iZiI6MTczMTA3MzA3MC45NTI0ODg3LCJzdWIiOiI2NWVmMzA1NmFmNThjYjAxODYyYmU1NGUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.jAFLrxX3seAFa11rA_tUOxxwc5pxxrq7kxtJ4xkS6NY";
 
 export const tmdbApi = axios.create({
   baseURL: BASE_API_URL,

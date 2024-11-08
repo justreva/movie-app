@@ -6,9 +6,11 @@ interface MovieCardProps {
   movie: Movie;
 }
 
-const MovieCard = ({ movie }: MovieCardProps) => {
+const MovieCard = ({ movie}: MovieCardProps) => {
   return (
-    <div className="w-[250px] border border-border rounded-lg shadow-lg overflow-hidden hover:border-secondary duration-150 relative group cursor-pointer">
+    <div
+      className={`w-[210px] border border-border rounded-lg shadow-lg overflow-hidden hover:border-secondary duration-150 relative group cursor-pointer`}
+    >
       <Link to={`/movie/${movie.id}`}>
         <img
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

@@ -4,9 +4,10 @@ import Slider from "../Slider/Slider";
 
 interface MoviesSliderProps {
   movies: Movie[];
+
 }
 
-const MovieSlider = ({ movies }: MoviesSliderProps) => {
+const MovieSlider = ({ movies}: MoviesSliderProps) => {
   return (
     <Slider
       items={movies}

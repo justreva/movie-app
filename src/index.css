@@ -14,7 +14,7 @@ body {
   @apply bg-primary;
 }
 
-.overlay-film-backdrop{
+.overlay-film-backdrop {
   position: absolute;
   left: 0;
   right: 0;
@@ -25,4 +25,10 @@ body {
     transparent 25%,
     theme("colors.primary")
   );
+}
+
+.about-movie {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

@@ -18,7 +18,7 @@ const Home = () => {
   if(isLoading) return <Loading></Loading> 
   if(error) return <Error></Error>
   return (
-    <main className="content container mx-auto">
+    <main className="content container">
       <div className="title">
         Welcome back, <i>User</i>. Here’s what you can watch…
       </div>
