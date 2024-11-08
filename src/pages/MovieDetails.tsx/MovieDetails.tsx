@@ -66,7 +66,7 @@ const MovieDetails = () => {
       <div className="h-[400px] left-0 right-0 top-0 relative">
         <div className="overlay-film-backdrop"></div>
         <img
-          src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+          src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
           alt="backdrop"
           className="w-full h-full object-cover"
         />
@@ -76,7 +76,7 @@ const MovieDetails = () => {
         <div className="flex justify-between">
           <div className="poster">
             <img
-              src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+              src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`}
               alt=""
               className="max-w-[240px] border border-border shadow-lg rounded-lg "
             />
@@ -92,16 +92,16 @@ const MovieDetails = () => {
               <h2 className="text-lg italic mt-2 text-description">
                 {movie?.tagline}
               </h2>
-              <h2 className="text-base mt-4">{movie.overview}</h2>
+              <h2 className="text-base mt-4">{movie?.overview}</h2>
             </div>
             <div>{cast ? <CastSlider casts={cast} /> : "Loading"}</div>
           </div>
 
           <div className="other-info">
-            <div>{ratingStyle(Number(movie.vote_average))}</div>
+            <div>{ratingStyle(Number(movie?.vote_average))}</div>
 
             <ul className="mt-[10px] space-y-2">
-              {movie.genres.map((genre) => (
+              {movie?.genres.map((genre) => (
                 <li
                   className="text-secondary text-center py-1 px-2 rounded-lg border border-border shadow-lg"
                   key={genre.id}
