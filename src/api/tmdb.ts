@@ -1,11 +1,8 @@
 import axios, { AxiosResponse } from "axios";
-import { Movie } from "../types/filmTypes";
+import { Movie, Person } from "../types/filmTypes";
 
 
 const BASE_API_URL = "https://api.themoviedb.org/3/";
-
-
-console.log(import.meta.env.VITE_API_TOKEN)
 export const tmdbApi = axios.create({
   baseURL: BASE_API_URL,
   params: {
@@ -13,7 +10,7 @@ export const tmdbApi = axios.create({
   },
   headers: {
     accept: "application/json",
-    Authorization: import.meta.env.VITE_API_TOKEN,
+    Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
   },
 });
 
@@ -22,7 +19,11 @@ export const fetchMoviesInTheaters = () => tmdbApi.get("/movie/now_playing");
 export const fetchMovieDetails = (id: number): Promise<AxiosResponse<Movie>> =>
   tmdbApi.get(`/movie/${id}`);
 
-export const fetchMovieCast = (id: number): Promise<AxiosResponse<Movie>> =>
+export const fetchMovieCast = (id: number): Promise<AxiosResponse<Person>> =>
   tmdbApi.get(`/movie/${id}/credits?language=en-US`);
 
-export const fetchRecommendations = (id: number): Promise<AxiosResponse<Movie>> => tmdbApi.get(`/movie/${id}/recommendations`)
+export const fetchRecommendations = (id: number): Promise<AxiosResponse<Movie>> => tmdbApi.get(`/movie/${id}/similar`)
+
+export const fetchPersonDetails = (id: number): Promise<AxiosResponse<Person>> => tmdbApi.get(`/person/${id}`)
+
+export const fetchCastMovies = (id: number): Promise<AxiosResponse<Movie>> => tmdbApi.get(`/person/${id}`)

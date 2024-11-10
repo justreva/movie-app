@@ -25,9 +25,13 @@ export interface Serial {
   tagline: string;
   genres: Genre[];
 }
-export interface Cast {
+export interface Person {
   id: number,
   name: string,
   profile_path: string,
-  character:string
+  character?:string,
+  biography?:string,
+  birthday?:string,
+  deathday?: string,
+  known_for_department:string
 }

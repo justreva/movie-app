@@ -1,8 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
+
 import Home from "./pages/Home";
-import MovieDetails from "./pages/MovieDetails.tsx/MovieDetails";
+import MovieDetails from "./pages/MovieDetails/MovieDetails";
+import CastDetails from "./pages/PersonDetails/PersonDetails";
+
 import "./index.css";
+
 const App = () => {
   return (
     <>
@@ -16,6 +20,7 @@ const App = () => {
             <Route path="/favorites" element={<h1>Favorites</h1>} />
             <Route path="*" element={<h1>Error</h1>} />
             <Route path="/movie/:id" element={<MovieDetails />} />
+            <Route path="/person/:id" element={<CastDetails />}/>
           </Routes>
 
       </Router>
