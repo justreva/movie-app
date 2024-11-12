@@ -20,6 +20,7 @@ const PersonDetails = () => {
   const movies = moviesWithPersonQuery.data?.data.cast
   console.log(movies)
   if (personDetailsQuery.isLoading) <Loading></Loading>;
+  if(moviesWithPersonQuery.isLoading) <Loading></Loading>
   else
     return (
       <div className="mt-20 container text-secondary flex items-start">
@@ -32,7 +33,8 @@ const PersonDetails = () => {
           </div>
 
           <div className="mt-4 grid grid-cols-5 gap-3">
-            {movies.map((movie) => 
+            
+            {movies.map((movie: Movie) => 
             <MovieCard movie={movie}/>
             )}
           </div>
@@ -46,7 +48,6 @@ const PersonDetails = () => {
               className="w-full"
             />
           </div>
-
           <MoreInfo maxCharacterCount={200}>{person?.biography || ""}</MoreInfo>
         </div>
       </div>
