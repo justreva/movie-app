@@ -49,13 +49,13 @@ export const convertDate = (birthday: string, deathday?: string) => {
     });
 
   if (!deathday) {
-    return `${new Date(birthday).getDay()} ${month(birthday)} ${new Date(
+    return `${new Date(birthday).getDate()} ${month(birthday)} ${new Date(
       birthday
     ).getFullYear()}`;
   } else {
-    return `${new Date(birthday).getDay()} ${month(birthday)} ${new Date(
+    return `${new Date(birthday).getDate()} ${month(birthday)} ${new Date(
       birthday
-    ).getFullYear()} - ${new Date(deathday).getDay()} ${month(
+    ).getFullYear()} - ${new Date(deathday).getDate()} ${month(
       deathday
     )} ${new Date(deathday).getFullYear()}`;
   }

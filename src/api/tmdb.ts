@@ -26,4 +26,4 @@ export const fetchRecommendations = (id: number): Promise<AxiosResponse<Movie>> 
 
 export const fetchPersonDetails = (id: number): Promise<AxiosResponse<Person>> => tmdbApi.get(`/person/${id}`)
 
-export const fetchCastMovies = (id: number): Promise<AxiosResponse<Movie>> => tmdbApi.get(`/person/${id}`)
+export const fetchMoviesWithPerson = (id: number): Promise<AxiosResponse<Movie>> => tmdbApi.get(`/person/${id}/movie_credits`)

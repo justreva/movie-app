@@ -1,6 +1,6 @@
 import { Person } from "../../types/filmTypes";
 import Slider from "../Slider/Slider";
-import CastCard from "../PersonCasd/PersonCard";
+import CastCard from "../PersonCard/PersonCard";
 interface CastSliderProps {
   persons: Person[];
 }
