@@ -11,6 +11,7 @@ import Loading from "../../components/Loading/Loading";
 import CastSlider from "../../components/PersonSlider/PersonSlider";
 import MovieSlider from "../../components/MovieSlider/MovieSlider";
 import { getYear, ratingStyle } from "../../utils/utils";
+import MoreInfo from "../../components/MoreInfo/MoreInfo";
 
 const MovieDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -68,7 +69,8 @@ const MovieDetails = () => {
               <h2 className="text-lg italic mt-2 text-description">
                 {movie?.tagline}
               </h2>
-              <h2 className="text-base mt-4">{movie?.overview}</h2>
+              <MoreInfo>{movie?.overview || ""}</MoreInfo>
+              
             </div>
             <div className="mt-2">{person ? <CastSlider persons={person} /> : "Loading"}</div>
           </div>
