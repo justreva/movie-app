@@ -3,6 +3,9 @@ export interface Genre {
   id: number;
   name: string;
 }
+
+export type MediaType = "movie" | "tv"
+
 export interface Movie {
   id: number;
   title: string;
@@ -12,7 +15,8 @@ export interface Movie {
   release_date: string;
   vote_average: number;
   tagline: string;
-  genres: Genre[]
+  genres: Genre[],
+
 }
 export interface Serial {
   id: number;
@@ -33,5 +37,6 @@ export interface Person {
   biography?:string,
   birthday?:string,
   deathday?: string,
-  known_for_department:string
+  known_for_department:string,
+  
 }

@@ -6,8 +6,11 @@ import Loading from "../../components/Loading/Loading";
 import Error from "../../components/Error/Error";
 import { Movie } from "../../types/filmTypes";
 import MovieSlider from "../../components/MovieSlider/MovieSlider";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate()
+
   const trendingMoviesQuery = useQuery(
     "trendingMovies",
     fetchTrendingMovies

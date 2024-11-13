@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { Movie, Person } from "../types/filmTypes";
+import { MediaType, Movie, Person } from "../types/filmTypes";
 
 
 const BASE_API_URL = "https://api.themoviedb.org/3/";
@@ -16,8 +16,8 @@ export const tmdbApi = axios.create({
 
 export const fetchMoviesInTheaters = () => tmdbApi.get("/movie/now_playing");
 
-export const fetchMovieDetails = (id: number): Promise<AxiosResponse<Movie>> =>
-  tmdbApi.get(`/movie/${id}`);
+export const fetchMovieDetails = (mediaType: MediaType, id: number): Promise<AxiosResponse<Movie>> =>
+  tmdbApi.get(`/${mediaType}/${id}`);
 
 export const fetchMovieCast = (id: number): Promise<AxiosResponse<Person>> =>
   tmdbApi.get(`/movie/${id}/credits?language=en-US`);

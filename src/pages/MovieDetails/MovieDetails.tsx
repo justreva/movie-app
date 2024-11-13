@@ -6,18 +6,22 @@ import {
   fetchRecommendations,
 } from "../../api/tmdb";
 import Actions from "../../components/Actions/Actions";
-import { Movie, Person } from "../../types/filmTypes";
+import { MediaType, Movie, Person } from "../../types/filmTypes";
 import Loading from "../../components/Loading/Loading";
 import CastSlider from "../../components/PersonSlider/PersonSlider";
 import MovieSlider from "../../components/MovieSlider/MovieSlider";
 import { getYear, ratingStyle } from "../../utils/utils";
 import MoreInfo from "../../components/MoreInfo/MoreInfo";
 
-const MovieDetails = () => {
+interface MovieDetailsProps {
+  mediaType: MediaType
+}
+
+const MovieDetails = (props: MovieDetailsProps) => {
   const { id } = useParams<{ id: string }>();
 
   const movieDetailsQuery = useQuery(["movieDetails", id], () =>
-    fetchMovieDetails(Number(id))
+    fetchMovieDetails(props.mediaType,Number(id))
   );
 
   const movieCastQuery = useQuery(["movieCast", id], () =>
