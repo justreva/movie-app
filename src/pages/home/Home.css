@@ -7,7 +7,7 @@
 }
 
 
-.recent-films__title{
+.trending_title{
 	@apply text-secondary border-b border-secondary text-xl pb-1
 }
 .recent-films-grid{

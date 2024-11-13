@@ -6,7 +6,7 @@ import { convertDate } from "../../utils/utils";
 import MoreInfo from "../../components/MoreInfo/MoreInfo";
 import { GiConsoleController } from "react-icons/gi";
 import Loading from "../../components/Loading/Loading";
-import MovieCard from "../../components/MovieCard/MovieCard";
+import MovieCard from "../../components/Card/Card";
 
 const PersonDetails = () => {
   const { id } = useParams<{ id: string }>();

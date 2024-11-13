@@ -9,13 +9,13 @@ interface MovieCardProps {
 const MovieCard = ({ movie}: MovieCardProps) => {
   return (
     <div
-      className={`w-[210px] border border-border rounded-lg shadow-lg overflow-hidden hover:border-secondary duration-150 relative group cursor-pointer`}
+      className={`w-full border border-border rounded-lg shadow-lg overflow-hidden hover:border-secondary duration-150 relative group cursor-pointer`}
     >
       <Link to={`/movie/${movie.id}`}>
       {movie.poster_path ? <img
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={movie.title}
-          className="h-[100%] w-[100%]"
+          className="h-full w-full"
         /> : <div className="bg-secondary animate-pulse w-full h-full"></div>}
         
       </Link>
