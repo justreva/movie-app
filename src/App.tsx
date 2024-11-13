@@ -12,17 +12,23 @@ const App = () => {
     <>
       <Router>
         <Navbar />
-        
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/movies" element={<h1>Movies</h1>} />
-            <Route path="/serials" element={<h1>Serials</h1>} />
-            <Route path="/favorites" element={<h1>Favorites</h1>} />
-            <Route path="*" element={<h1>Error</h1>} />
-            <Route path="/movie/:id" element={<MovieDetails mediaType={"movie"}/>} />
-            <Route path="/person/:id" element={<CastDetails />}/>
-          </Routes>
 
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movies" element={<h1>Movies</h1>} />
+          <Route path="/serials" element={<h1>Serials</h1>} />
+          <Route path="/favorites" element={<h1>Favorites</h1>} />
+          <Route path="*" element={<h1>Error</h1>} />
+          <Route
+            path="/movie/:id"
+            element={<MovieDetails mediaType={"movie"} />}
+          />
+          <Route
+            path="/tv/:id"
+            element={<MovieDetails mediaType={"tv"} />}
+          />
+          <Route path="/person/:id" element={<CastDetails />} />
+        </Routes>
       </Router>
     </>
   );

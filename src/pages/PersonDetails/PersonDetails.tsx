@@ -4,7 +4,6 @@ import { fetchMoviesWithPerson, fetchPersonDetails } from "../../api/tmdb";
 import { Movie, Person } from "../../types/filmTypes";
 import { convertDate } from "../../utils/utils";
 import MoreInfo from "../../components/MoreInfo/MoreInfo";
-import { GiConsoleController } from "react-icons/gi";
 import Loading from "../../components/Loading/Loading";
 import MovieCard from "../../components/Card/Card";
 
@@ -18,7 +17,7 @@ const PersonDetails = () => {
   );
   const person: Person | undefined = personDetailsQuery.data?.data;
   const movies = moviesWithPersonQuery.data?.data.cast
-  console.log(movies)
+
   if (personDetailsQuery.isLoading) <Loading></Loading>;
   if(moviesWithPersonQuery.isLoading) <Loading></Loading>
   else
@@ -35,7 +34,7 @@ const PersonDetails = () => {
           <div className="mt-4 grid grid-cols-5 gap-3">
             
             {movies.map((movie: Movie) => 
-            <MovieCard movie={movie}/>
+            <MovieCard key={movie.id} movie={movie}/>
             )}
           </div>
         </div>

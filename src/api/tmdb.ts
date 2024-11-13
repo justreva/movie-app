@@ -19,8 +19,8 @@ export const fetchMoviesInTheaters = () => tmdbApi.get("/movie/now_playing");
 export const fetchMovieDetails = (mediaType: MediaType, id: number): Promise<AxiosResponse<Movie>> =>
   tmdbApi.get(`/${mediaType}/${id}`);
 
-export const fetchMovieCast = (id: number): Promise<AxiosResponse<Person>> =>
-  tmdbApi.get(`/movie/${id}/credits?language=en-US`);
+export const fetchMovieCast = (mediaType:MediaType, id: number): Promise<AxiosResponse<Person>> =>
+  tmdbApi.get(`/${mediaType}/${id}/credits?language=en-US`);
 
 export const fetchRecommendations = (id: number): Promise<AxiosResponse<Movie>> => tmdbApi.get(`/movie/${id}/similar`)
 

@@ -14,18 +14,18 @@ import { getYear, ratingStyle } from "../../utils/utils";
 import MoreInfo from "../../components/MoreInfo/MoreInfo";
 
 interface MovieDetailsProps {
-  mediaType: MediaType
+  mediaType: MediaType;
 }
 
 const MovieDetails = (props: MovieDetailsProps) => {
   const { id } = useParams<{ id: string }>();
 
   const movieDetailsQuery = useQuery(["movieDetails", id], () =>
-    fetchMovieDetails(props.mediaType,Number(id))
+    fetchMovieDetails(props.mediaType, Number(id))
   );
 
   const movieCastQuery = useQuery(["movieCast", id], () =>
-    fetchMovieCast(Number(id))
+    fetchMovieCast(props.mediaType,Number(id))
   );
 
   const recommendationQuery = useQuery(["movieRecommendation", id], () =>
@@ -36,8 +36,6 @@ const MovieDetails = (props: MovieDetailsProps) => {
   const person: Person[] | [] = movieCastQuery.data?.data.cast;
   const recommendationMovies: Movie[] | [] =
     recommendationQuery.data?.data.results;
-
- 
 
   if (movieDetailsQuery.isLoading) return <Loading></Loading>;
   if (movieDetailsQuery.error) return;
@@ -68,15 +66,20 @@ const MovieDetails = (props: MovieDetailsProps) => {
 
           <div className="about-movie w-[500px] text-pretty text-secondary">
             <div>
-              <h1 className="text-3xl font-medium ">{movie?.title}</h1>
-              <h2 className="mt-2">{getYear(movie.release_date)}</h2>
+              <h1 className="text-3xl font-medium ">
+                {movie?.title || movie?.name}
+              </h1>
+              <h2 className="mt-2">
+                {getYear(movie)}
+              </h2>
               <h2 className="text-lg italic mt-2 text-description">
                 {movie?.tagline}
               </h2>
               <MoreInfo>{movie?.overview || ""}</MoreInfo>
-              
             </div>
-            <div className="mt-2">{person ? <CastSlider persons={person} /> : "Loading"}</div>
+            <div className="mt-2">
+              {person ? <CastSlider persons={person} /> : "Loading"}
+            </div>
           </div>
 
           <div className="other-info">
@@ -99,8 +102,11 @@ const MovieDetails = (props: MovieDetailsProps) => {
           <h1 className="text-xl font-medium text-secondary border-b pb-1 mb-2">
             Recommendations
           </h1>
-          {recommendationMovies ? <MovieSlider movies={recommendationMovies} /> : "Loading"}
-          
+          {recommendationMovies ? (
+            <MovieSlider movies={recommendationMovies} />
+          ) : (
+            "Loading"
+          )}
         </div>
       </div>
     </>

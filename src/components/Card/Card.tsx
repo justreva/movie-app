@@ -1,15 +1,20 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Movie } from "../../types/filmTypes";
+import { MediaType, Movie } from "../../types/filmTypes";
 import Actions from "../Actions/Actions";
 
 interface MovieCardProps {
   movie: Movie;
+  media_type:MediaType
 }
 
 const MovieCard = ({movie}: MovieCardProps) => {
   const navigate = useNavigate();
   const goToDetailPage = (movie: MovieCardProps) => {
+    if(!movie.media_type) {
+      return navigate(`/movie/${movie.id}`)
+    }
     navigate(`/${movie.media_type}/${movie.id}`)
+    console.log(movie)
   }
   return (
     <div

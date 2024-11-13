@@ -1,5 +1,17 @@
-export const getYear = (date: string) => {
-  return new Date(date).getFullYear();
+export const getYear = (movie) => {
+  if (movie.first_air_date) {
+    if (movie.first_air_date == movie.last_air_date) {
+      return new Date(movie.first_air_date).getFullYear();
+    }
+
+    if (movie.last_air_date) {
+      return `${new Date(movie.first_air_date).getFullYear()} - ${new Date(
+        movie.last_air_date
+      ).getFullYear()}`;
+    }
+    return new Date(movie.first_air_date).getFullYear();
+  }
+  return new Date(movie.release_date).getFullYear();
 };
 
 export const ratingStyle = (vote_average: number) => {
