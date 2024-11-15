@@ -32,3 +32,6 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+select option{
+  @apply bg-primary  text-secondary 
+}

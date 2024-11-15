@@ -36,7 +36,7 @@ const MovieDetails = (props: MovieDetailsProps) => {
   const persons: Person[] | [] = movieCastQuery.data?.data;
   const recommendationMovies: Movie[] | [] =
     recommendationQuery.data?.data.results;
-console.log(persons)
+console.log(movie)
   if (movieDetailsQuery.isLoading) return <Loading></Loading>;
   if (movieDetailsQuery.error) return;
   if (!movieDetailsQuery.data) return "Not found";

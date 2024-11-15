@@ -26,8 +26,8 @@ export const fetchRecommendations = (mediaType:MediaType, id: number): Promise<A
 
 export const fetchPersonDetails = (id: number): Promise<AxiosResponse<Person>> => tmdbApi.get(`/person/${id}`)
 
-export const fetchMoviesWithPerson = (id: number): Promise<AxiosResponse<Movie>> => tmdbApi.get(`/person/${id}/movie_credits`)
+export const fetchMoviesWithPerson = (id: number): Promise<AxiosResponse<Movie>> => tmdbApi.get(`/person/${id}/combined_credits`)
 
-export const fetchTrendingMovies = (): Promise<AxiosResponse<Movie>> => tmdbApi.get(`/trending/movie/week`)
+export const fetchTrendingMovies = (time_window:string) : Promise<AxiosResponse<Movie>> => tmdbApi.get(`/trending/movie/${time_window}`)
 
-export const fetchTrendingSeries = (): Promise<AxiosResponse> => tmdbApi.get(`/trending/tv/week`)
+export const fetchTrendingSeries = (time_window:string): Promise<AxiosResponse> => tmdbApi.get(`/trending/tv/${time_window}`)
