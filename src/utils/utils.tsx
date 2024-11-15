@@ -1,10 +1,12 @@
 export const getYear = (movie) => {
   if (movie.first_air_date) {
-    if (movie.first_air_date == movie.last_air_date) {
-      return new Date(movie.first_air_date).getFullYear();
-    }
-
     if (movie.last_air_date) {
+      if (
+        new Date(movie.first_air_date).getFullYear() ===
+        new Date(movie.last_air_date).getFullYear()
+      ) {
+        return new Date(movie.first_air_date).getFullYear();
+      }
       return `${new Date(movie.first_air_date).getFullYear()} - ${new Date(
         movie.last_air_date
       ).getFullYear()}`;

@@ -22,7 +22,7 @@ export const fetchMovieDetails = (mediaType: MediaType, id: number): Promise<Axi
 export const fetchMovieCast = (mediaType:MediaType, id: number): Promise<AxiosResponse<Person>> =>
   tmdbApi.get(`/${mediaType}/${id}/credits?language=en-US`);
 
-export const fetchRecommendations = (id: number): Promise<AxiosResponse<Movie>> => tmdbApi.get(`/movie/${id}/similar`)
+export const fetchRecommendations = (mediaType:MediaType, id: number): Promise<AxiosResponse<Movie>> => tmdbApi.get(`/${mediaType}/${id}/recommendations`)
 
 export const fetchPersonDetails = (id: number): Promise<AxiosResponse<Person>> => tmdbApi.get(`/person/${id}`)
 

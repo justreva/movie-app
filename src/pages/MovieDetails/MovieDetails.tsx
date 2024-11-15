@@ -25,18 +25,18 @@ const MovieDetails = (props: MovieDetailsProps) => {
   );
 
   const movieCastQuery = useQuery(["movieCast", id], () =>
-    fetchMovieCast(props.mediaType,Number(id))
+    fetchMovieCast(props.mediaType, Number(id))
   );
 
   const recommendationQuery = useQuery(["movieRecommendation", id], () =>
-    fetchRecommendations(Number(id))
+    fetchRecommendations(props.mediaType, Number(id))
   );
 
   const movie: Movie | undefined = movieDetailsQuery.data?.data;
-  const person: Person[] | [] = movieCastQuery.data?.data.cast;
+  const persons: Person[] | [] = movieCastQuery.data?.data;
   const recommendationMovies: Movie[] | [] =
     recommendationQuery.data?.data.results;
-
+console.log(persons)
   if (movieDetailsQuery.isLoading) return <Loading></Loading>;
   if (movieDetailsQuery.error) return;
   if (!movieDetailsQuery.data) return "Not found";
@@ -69,16 +69,14 @@ const MovieDetails = (props: MovieDetailsProps) => {
               <h1 className="text-3xl font-medium ">
                 {movie?.title || movie?.name}
               </h1>
-              <h2 className="mt-2">
-                {getYear(movie)}
-              </h2>
+              <h2 className="mt-2">{getYear(movie)}</h2>
               <h2 className="text-lg italic mt-2 text-description">
                 {movie?.tagline}
               </h2>
               <MoreInfo>{movie?.overview || ""}</MoreInfo>
             </div>
             <div className="mt-2">
-              {person ? <CastSlider persons={person} /> : "Loading"}
+              {movieCastQuery.isLoading ? <Loading></Loading> : <CastSlider persons={persons.cast} />}
             </div>
           </div>
 
