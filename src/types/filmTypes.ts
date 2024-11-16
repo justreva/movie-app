@@ -6,6 +6,13 @@ export interface Genre {
 
 export type MediaType = "movie" | "tv"
 
+export interface Season {
+  id: number;
+  name:string;
+  episode_count: number;
+  season_number: number;
+}
+
 export interface Movie {
   id: number;
   title: string;
@@ -16,6 +23,7 @@ export interface Movie {
   vote_average: number;
   tagline: string;
   genres: Genre[],
+  seasons?: Season[]
 
 }
 export interface Serial {
@@ -38,5 +46,4 @@ export interface Person {
   birthday?:string,
   deathday?: string,
   known_for_department:string,
-  
 }

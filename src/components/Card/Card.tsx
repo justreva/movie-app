@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { MediaType, Movie } from "../../types/filmTypes";
 import Actions from "../Actions/Actions";
+import { ratingStyle } from "../../utils/utils";
 
 interface MovieCardProps {
   movie: Movie;
@@ -31,6 +32,9 @@ const MovieCard = ({ movie }: MovieCardProps) => {
         ) : (
           <div className="bg-secondary animate-pulse w-full h-full"></div>
         )}
+      </div>
+      <div className="absolute bg-opacity-80 top-0 left-0 ">
+        {ratingStyle(movie.vote_average)}
       </div>
       <div className="actions hidden absolute space-x-2 bg-primary p-1 rounded-lg bg-opacity-80 top-[90%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:flex group-focus-within:flex text-secondary">
         <Actions />

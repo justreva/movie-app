@@ -45,7 +45,7 @@ const Home = () => {
 
       <div className="trending">
         <div className="trending_title flex justify-between">
-          <h1>Trending movies on this week</h1>
+          <h1>Trending movies</h1>
           <select
             onChange={(e) => handleSelectChangeMovie(e.target.value)}
             className="text-base bg-primary border border-border rounded-lg p-1 hover:border-secondary cursor-pointer delay-150 hover:bg-primary active:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
@@ -60,7 +60,7 @@ const Home = () => {
 
         <div>
           <div className="trending_title mt-10 flex justify-between">
-            <h1>Trending serials on this week</h1>
+            <h1>Trending serials</h1>
             <select
             onChange={(e) => handleSelectChangeSerial(e.target.value)}
             className="text-base bg-primary border border-border rounded-lg p-1 hover:border-secondary cursor-pointer delay-150 hover:bg-primary active:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
