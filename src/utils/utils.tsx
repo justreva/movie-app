@@ -74,3 +74,4 @@ export const convertDate = (birthday: string, deathday?: string) => {
     )} ${new Date(deathday).getFullYear()}`;
   }
 };
+

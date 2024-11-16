@@ -35,3 +35,7 @@ body {
 select option{
   @apply bg-primary  text-secondary 
 }
+
+.active_season{
+  @apply text-secondary
+}
