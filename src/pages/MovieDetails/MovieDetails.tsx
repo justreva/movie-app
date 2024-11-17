@@ -4,6 +4,7 @@ import {
   fetchMovieCast,
   fetchMovieDetails,
   fetchRecommendations,
+  fetchSeasonsDetails,
 } from "../../api/tmdb";
 import Actions from "../../components/Actions/Actions";
 import { MediaType, Movie, Person } from "../../types/filmTypes";
@@ -13,6 +14,8 @@ import MovieSlider from "../../components/MovieSlider/MovieSlider";
 import { getYear, ratingStyle } from "../../utils/utils";
 import MoreInfo from "../../components/MoreInfo/MoreInfo";
 import { useEffect, useState } from "react";
+import EpisodeSlider from "../../components/EpisodeSlider/EpisodeSlider";
+
 
 interface MovieDetailsProps {
   mediaType: MediaType;
@@ -35,28 +38,34 @@ const MovieDetails = (props: MovieDetailsProps) => {
 
   const movie: Movie | undefined = movieDetailsQuery.data?.data;
   const persons: Person[] | undefined = movieCastQuery.data?.data.cast;
-  const [activeState, setActiveState] = useState<number | null>(null);
+  const [activeSeason, setActiveSeason] = useState<number | null>(null);
 
   useEffect(() => {
     if (movie?.seasons?.length) {
-      setActiveState(movie.seasons[0].id);
+      setActiveSeason(movie.seasons[0].season_number);
     }
   }, [movie]);
 
   const handleClick = (index: number) => {
-    setActiveState(index);
+    setActiveSeason(index);
   };
 
+  const seasonsDetailsQuery = useQuery(
+    ["seasonsDetails", id, activeSeason],
+    () => fetchSeasonsDetails(Number(id), Number(activeSeason))
+  );
+  const seasonDetails: Episode[] | [] = seasonsDetailsQuery.data?.data.episodes;
+  console.log(seasonDetails);
   const recommendationMovies: Movie[] | [] =
     recommendationQuery.data?.data.results;
-  console.log(movie);
 
+  if (seasonsDetailsQuery.isLoading) return <Loading></Loading>;
   if (movieDetailsQuery.isLoading) return <Loading></Loading>;
   if (movieDetailsQuery.error) return;
   if (!movieDetailsQuery.data) return "Not found";
   return (
     <>
-      <div className="h-[400px] left-0 right-0 top-0 relative">
+      <div className="h-[450px] left-0 right-0 top-0 relative">
         <div className="overlay-film-backdrop"></div>
         <img
           src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
@@ -84,7 +93,7 @@ const MovieDetails = (props: MovieDetailsProps) => {
                 {movie?.title || movie?.name}
               </h1>
               <h2 className="mt-2">
-                {getYear(movie)} ({movie.status})
+                {getYear(movie)} ({movie?.status})
               </h2>
               <h2 className="text-lg italic mt-2 text-description">
                 {movie?.tagline}
@@ -122,14 +131,19 @@ const MovieDetails = (props: MovieDetailsProps) => {
                 <li
                   key={season.id}
                   className={`${
-                    activeState === season.id ? "text-secondary" : ""
+                    activeSeason === season.season_number
+                      ? "text-secondary"
+                      : ""
                   } hover:text-secondary cursor-pointer delay-50`}
-                  onClick={() => handleClick(season.id)}
+                  onClick={() => handleClick(season.season_number)}
                 >
                   {season.name}
                 </li>
               ))}
             </ul>
+            <div className="mt-2 flex">
+              <EpisodeSlider season={seasonDetails} />
+            </div>
           </div>
         ) : (
           ""
