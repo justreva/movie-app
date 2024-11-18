@@ -52,3 +52,7 @@ export const fetchTrendingSeries = (
 
 export const fetchSeasonsDetails = (series_id: number, season_number: number): Promise<AxiosResponse> =>
   tmdbApi.get(`/tv/${series_id}/season/${season_number}`);
+
+
+export const fetchMovies = (request: string): Promise<AxiosResponse> =>
+  tmdbApi.get(`/movie/${request}`);

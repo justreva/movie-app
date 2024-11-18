@@ -55,7 +55,7 @@ const MovieDetails = (props: MovieDetailsProps) => {
     () => fetchSeasonsDetails(Number(id), Number(activeSeason))
   );
   const seasonDetails: Episode[] | [] = seasonsDetailsQuery.data?.data.episodes;
-  console.log(seasonDetails);
+  
   const recommendationMovies: Movie[] | [] =
     recommendationQuery.data?.data.results;
 

@@ -6,6 +6,7 @@ import MovieDetails from "./pages/MovieDetails/MovieDetails";
 import CastDetails from "./pages/PersonDetails/PersonDetails";
 
 import "./index.css";
+import Movies from "./pages/Movies/Movies";
 
 const App = () => {
   return (
@@ -15,7 +16,7 @@ const App = () => {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<h1>Movies</h1>} />
+          <Route path="/movies" element={<Movies />} />
           <Route path="/serials" element={<h1>Serials</h1>} />
           <Route path="/favorites" element={<h1>Favorites</h1>} />
           <Route path="*" element={<h1>Error</h1>} />

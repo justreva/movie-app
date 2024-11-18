@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/pagination";
+import 'swiper/css/effect-fade'
+import { EffectFade, Autoplay } from 'swiper/modules'
 
 interface SliderProps<T> {
   items: T[];
@@ -27,6 +28,7 @@ const Slider = <T,>({
         spaceBetween={spaceBetween}
         slidesPerView={slidesPerView}
         breakpoints={responsive}
+        
       >
         {items.map((item, index) => 
           <SwiperSlide key={index} >{renderItem(item)}</SwiperSlide>
