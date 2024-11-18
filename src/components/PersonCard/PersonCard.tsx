@@ -18,13 +18,16 @@ const CastCard = ({ person }: CastCardProps) => {
         <div className="bg-border w-full h-full animate-pulse"></div>
       )}
 
-      <Link to={`/person/${person.id}`} className="actions hidden absolute w-[90%] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] p-2 rounded-lg bg-opacity-80 group-hover:block group-focus-within:block text-white space-y-1 my-auto bg-black text-center border hover:border hover:border-active ">
-        <h1  className="text-base">
-          {person.name}
-        </h1>
-        <h1 className="border-t border-secondary text-base">
-          {person.character}
-        </h1>
+      <Link
+        to={`/person/${person.id}`}
+        className="actions hidden absolute left-0 top-0 bg-black/65 w-full h-full group-hover:block group-focus-within:block p-1 "
+      >
+        <div className="text-center pt-10 duration-150">
+          <h1 className="text-base">{person.name}</h1>
+          <h1 className="border-t border-secondary text-base">
+            {person.character}
+          </h1>
+        </div>
       </Link>
     </div>
   );

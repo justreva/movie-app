@@ -20,14 +20,14 @@ const MovieCard = ({ movie }: MovieCardProps) => {
   return (
     <div
       onClick={() => goToDetailPage(movie)}
-      className={`w-[210px] h-[315px] border border-border rounded-lg shadow-lg overflow-hidden hover:border-secondary duration-150 relative group cursor-pointer`}
+      className={`w-[210px] border border-border rounded-lg shadow-lg overflow-hidden hover:border-secondary duration-150 relative group cursor-pointer`}
     >
       <div>
         {movie.poster_path ? (
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt={movie.title}
-            className="w-full"
+            className="w-full h-[312px]"
           />
         ) : (
           <div className="bg-secondary animate-pulse w-full h-full"></div>
