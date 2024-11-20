@@ -2,7 +2,7 @@ import { Person } from "../../types/filmTypes";
 import Slider from "../Slider/Slider";
 import CastCard from "../PersonCard/PersonCard";
 interface CastSliderProps {
-  persons: Person[];
+  persons: Person[] | undefined;
 }
 
 const PersonSlider = ({ persons }: CastSliderProps) => {

@@ -1,3 +1,4 @@
+
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import {
@@ -50,16 +51,20 @@ const MovieDetails = (props: MovieDetailsProps) => {
     setActiveSeason(index);
   };
 
-  const seasonsDetailsQuery = useQuery(
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const seasonDetails: Episode[] | [] = props.mediaType === "tv" ? useQuery(
     ["seasonsDetails", id, activeSeason],
     () => fetchSeasonsDetails(Number(id), Number(activeSeason))
-  );
-  const seasonDetails: Episode[] | [] = seasonsDetailsQuery.data?.data.episodes;
+  ).data?.data.episodes || [] : []
+    
+  
+  
+  
   
   const recommendationMovies: Movie[] | [] =
-    recommendationQuery.data?.data.results;
-
-  if (seasonsDetailsQuery.isLoading) return <Loading></Loading>;
+  recommendationQuery.data?.data.results;
+  
+  
   if (movieDetailsQuery.isLoading) return <Loading></Loading>;
   if (movieDetailsQuery.error) return;
   if (!movieDetailsQuery.data) return "Not found";

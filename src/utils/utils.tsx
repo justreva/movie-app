@@ -20,7 +20,7 @@ export const ratingStyle = (vote_average: number) => {
   const rating = vote_average.toFixed(1);
   if (Number(rating) >= 7)
     return (
-      <span className="text-2xl text-secondary bg-green-700 py-1 px-2 rounded-lg font-medium">
+      <span className="text-xl text-secondary bg-green-700 py-1 px-2 rounded-lg font-medium">
         {rating}
       </span>
     );
