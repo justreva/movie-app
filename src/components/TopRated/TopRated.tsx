@@ -7,6 +7,9 @@ interface topRatedProps {
 interface detailsProps {
   movie: Movie;
   media_type: MediaType;
+  first_air_date: string
+  id: string
+  
 }
 const TopRated = ({ movie }: topRatedProps) => {
   console.log(movie)
