@@ -16,8 +16,8 @@ const App = () => {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/serials" element={<h1>Serials</h1>} />
+          <Route path="/movies" element={<Movies mediaType={"movie"}/>} />
+          <Route path="/serials" element={<Movies mediaType={"tv"}/>} />
           <Route path="/favorites" element={<h1>Favorites</h1>} />
           <Route path="*" element={<h1>Error</h1>} />
           <Route

@@ -5,12 +5,15 @@ import "swiper/css/effect-fade";
 import { Movie } from "../../types/filmTypes";
 import TopRated from "../TopRated/TopRated";
 import Error from "../Error/Error";
+
+
 interface CarouselProps {
   movies: Movie[] | undefined;
 }
 
 const Carousel = ({ movies }: CarouselProps) => {
-  console.log(movies);
+  
+
   return (
     <Swiper
       modules={[EffectFade, Autoplay, EffectCoverflow]}

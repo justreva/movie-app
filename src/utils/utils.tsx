@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 export const getYear = (movie) => {
   if (movie.first_air_date) {
     if (movie.last_air_date) {
@@ -74,4 +76,5 @@ export const convertDate = (birthday: string, deathday?: string) => {
     )} ${new Date(deathday).getFullYear()}`;
   }
 };
+ 
 

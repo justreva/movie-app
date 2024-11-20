@@ -8,7 +8,7 @@ import {
   fetchSeasonsDetails,
 } from "../../api/tmdb";
 import Actions from "../../components/Actions/Actions";
-import { MediaType, Movie, Person } from "../../types/filmTypes";
+import { MediaType, Movie, Person, Episode } from "../../types/filmTypes";
 import Loading from "../../components/Loading/Loading";
 import CastSlider from "../../components/PersonSlider/PersonSlider";
 import MovieSlider from "../../components/MovieSlider/MovieSlider";

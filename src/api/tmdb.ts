@@ -54,5 +54,5 @@ export const fetchSeasonsDetails = (series_id: number, season_number: number): P
   tmdbApi.get(`/tv/${series_id}/season/${season_number}`);
 
 
-export const fetchMovies = (request: string): Promise<AxiosResponse> =>
-  tmdbApi.get(`/movie/${request}`);
+export const fetchMovies = (mediaType: string, request: string): Promise<AxiosResponse> =>
+  tmdbApi.get(`/${mediaType}/${request}`);

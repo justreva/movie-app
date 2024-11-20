@@ -15,7 +15,6 @@ const MovieCard = ({ movie }: MovieCardProps) => {
       return navigate(`/movie/${movie.id}`);
     }
     navigate(`/${movie.media_type}/${movie.id}`);
-    console.log(movie);
   };
   return (
     <div
