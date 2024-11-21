@@ -31,6 +31,7 @@ const App = () => {
           <Route path="/person/:id" element={<CastDetails />} />
         </Routes>
       </Router>
+        
     </>
   );
 };

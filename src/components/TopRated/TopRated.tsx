@@ -36,7 +36,7 @@ const TopRated = ({ movie }: topRatedProps) => {
             <h1>{ratingStyle(movie.vote_average)}</h1>
           </div>
           <h1 className="text-sm">{getYear(movie)}</h1>
-          <h1 className="text-sm w-[300px]">{movie.overview.slice(0, 100)}...</h1>
+          <h1 className="text-sm w-[300px] ">{movie.overview.slice(0, 100)}...</h1>
         </div>
       </div>
     </div>
