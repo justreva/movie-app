@@ -43,16 +43,26 @@ export const fetchMoviesWithPerson = (
 
 export const fetchTrendingMovies = (
   time_window: string
-): Promise<AxiosResponse<Movie>> =>
+): Promise<AxiosResponse<Movie[]>> =>
   tmdbApi.get(`/trending/movie/${time_window}`);
 
 export const fetchTrendingSeries = (
   time_window: string
 ): Promise<AxiosResponse> => tmdbApi.get(`/trending/tv/${time_window}`);
 
-export const fetchSeasonsDetails = (series_id: number, season_number: number): Promise<AxiosResponse> =>
+export const fetchSeasonsDetails = (
+  series_id: number,
+  season_number: number
+): Promise<AxiosResponse> =>
   tmdbApi.get(`/tv/${series_id}/season/${season_number}`);
 
+export const fetchMovies = (
+  mediaType: string,
+  request: string
+): Promise<AxiosResponse> => tmdbApi.get(`/${mediaType}/${request}`);
 
-export const fetchMovies = (mediaType: string, request: string): Promise<AxiosResponse> =>
-  tmdbApi.get(`/${mediaType}/${request}`);
+export const fetchSearchQuery = (
+  query: string
+) => {
+  tmdbApi.get(`/search/multi?query=${query}`)
+};

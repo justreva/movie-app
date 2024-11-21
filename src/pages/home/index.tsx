@@ -13,8 +13,8 @@ import MovieSlider from "../../components/MovieSlider/MovieSlider";
 import { useState } from "react";
 
 const Home = () => {
-  const [movieTimeWindow, setMovieTimeWindow] = useState("day");
-  const [serialTimeWindow, setSerialTimeWindow] = useState("day");
+  const [movieTimeWindow, setMovieTimeWindow] = useState("week");
+  const [serialTimeWindow, setSerialTimeWindow] = useState("week");
   const trendingMoviesQuery = useQuery(
     ["trendingMovies", movieTimeWindow],
     () => fetchTrendingMovies(movieTimeWindow),
@@ -50,8 +50,8 @@ const Home = () => {
             onChange={(e) => handleSelectChangeMovie(e.target.value)}
             className="text-base bg-primary border border-border rounded-lg p-1 hover:border-secondary cursor-pointer delay-150 hover:bg-primary active:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
           >
-            <option value="day">day</option>
             <option value="week">week</option>
+            <option value="day">day</option>
           </select>
         </div>
         <div className="mt-2">
@@ -65,8 +65,8 @@ const Home = () => {
             onChange={(e) => handleSelectChangeSerial(e.target.value)}
             className="text-base bg-primary border border-border rounded-lg p-1 hover:border-secondary cursor-pointer delay-150 hover:bg-primary active:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
           >
-            <option value="day">day</option>
             <option value="week">week</option>
+            <option value="day">day</option>
           </select>
           </div>
           <div className="mt-2">
