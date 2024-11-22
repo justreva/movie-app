@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+
 
 export const getYear = (movie) => {
   if (movie.first_air_date) {

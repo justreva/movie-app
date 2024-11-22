@@ -1,10 +1,12 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
   const [searchFocus, setSearchFocus] = useState(false);
   const [query, setQuery] = useState("");
- 
+  const navigate = useNavigate()
+
   const onWindowClick = () => {
     setSearchFocus(false);
   };
@@ -20,8 +22,12 @@ const SearchBar = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
-  console.log(query);
 
+  const enterQuery = (query: string) => {
+    const changedQuery = query.replace(" ", "%20");
+    navigate(`/search/multi/${changedQuery}`)
+  }
+  
   return (
     <div className={`flex items-center border-b group p-1 rounded-xs`}>
       <input
@@ -32,7 +38,7 @@ const SearchBar = () => {
         onChange={handleInputChange}
         onKeyDown={(e) => {
           if(e.code === "Enter"){
-            
+            enterQuery(query)
           }
         }}
         type="text"
