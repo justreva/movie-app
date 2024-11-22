@@ -1,17 +1,10 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
-import { fetchSearchQuery } from "../../api/tmdb";
-import { useQuery } from "react-query";
 
 const SearchBar = () => {
   const [searchFocus, setSearchFocus] = useState(false);
   const [query, setQuery] = useState("");
-  const searchQuery = useQuery(["searchQuery"], () => fetchSearchQuery(query), {
-    enabled: !!query,
-  });
-  
-  const queryData: [] | undefined = searchQuery.data || []
-  console.log(queryData)
+ 
   const onWindowClick = () => {
     setSearchFocus(false);
   };
@@ -37,6 +30,11 @@ const SearchBar = () => {
           setSearchFocus(true);
         }}
         onChange={handleInputChange}
+        onKeyDown={(e) => {
+          if(e.code === "Enter"){
+            
+          }
+        }}
         type="text"
         className="bg-transparent outline-0 placeholder:text-description"
         placeholder="Search..."

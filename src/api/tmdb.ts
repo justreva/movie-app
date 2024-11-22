@@ -63,6 +63,5 @@ export const fetchMovies = (
 
 export const fetchSearchQuery = (
   query: string
-) => {
-  tmdbApi.get(`/search/multi?query=${query}`)
-};
+) => tmdbApi.get(`/search/multi?query=${query}`)
+;

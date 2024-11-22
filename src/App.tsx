@@ -7,6 +7,8 @@ import CastDetails from "./pages/PersonDetails/PersonDetails";
 
 import "./index.css";
 import Movies from "./pages/Movies/Movies";
+import List from "./pages/List/List";
+import Error from "./components/Error/Error";
 
 const App = () => {
   return (
@@ -19,7 +21,7 @@ const App = () => {
           <Route path="/movies" element={<Movies mediaType={"movie"}/>} />
           <Route path="/serials" element={<Movies mediaType={"tv"}/>} />
           <Route path="/favorites" element={<h1>Favorites</h1>} />
-          <Route path="*" element={<h1>Error</h1>} />
+          <Route path="*" element={<Error />} />
           <Route
             path="/movie/:id"
             element={<MovieDetails mediaType={"movie"} />}
@@ -29,6 +31,7 @@ const App = () => {
             element={<MovieDetails mediaType={"tv"} />}
           />
           <Route path="/person/:id" element={<CastDetails />} />
+          <Route path="/search/:query" element={<List />}/>
         </Routes>
       </Router>
         

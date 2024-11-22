@@ -8,12 +8,12 @@ export const EpisodeCard = ({ episode }: EpisodeCardProps) => {
   console.log(episode);
   return (
     <>
-      <div className="w-[320px] overflow-hidden border z-[1] border-border rounded-lg hover:border-secondary duration-150 cursor-pointer shadow-lg relative ">
+      <div className="w-[320px] h-[178px] overflow-hidden border z-[1] border-border rounded-lg hover:border-secondary duration-150 cursor-pointer shadow-lg relative ">
         {episode.still_path !== null ? (
           <img
             src={`https://image.tmdb.org/t/p/original/${episode.still_path}`}
             alt=""
-            
+            className="w-full"
           />
         ) : (
           <div className="w-[320px] bg-black h-[178px] flex justify-center items-center"> 
