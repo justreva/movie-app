@@ -1,6 +1,5 @@
 import { useQuery } from "react-query";
 import {
-  fetchMoviesInTheaters,
   fetchTrendingMovies,
   fetchTrendingSeries,
 } from "../../api/tmdb";
@@ -15,6 +14,7 @@ import { useState } from "react";
 const Home = () => {
   const [movieTimeWindow, setMovieTimeWindow] = useState("week");
   const [serialTimeWindow, setSerialTimeWindow] = useState("week");
+  
   const trendingMoviesQuery = useQuery(
     ["trendingMovies", movieTimeWindow],
     () => fetchTrendingMovies(movieTimeWindow),

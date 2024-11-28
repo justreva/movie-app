@@ -8,7 +8,7 @@ interface MovieCardProps {
   media_type: MediaType;
 }
 
-const MovieCard = ({ movie }: MovieCardProps) => {
+const Card = ({ movie }: MovieCardProps) => {
   const navigate = useNavigate();
   const goToDetailPage = (movie: MovieCardProps) => {
     if (!movie.media_type) {
@@ -42,4 +42,4 @@ const MovieCard = ({ movie }: MovieCardProps) => {
   );
 };
 
-export default MovieCard;
+export default Card;

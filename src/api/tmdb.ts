@@ -61,5 +61,5 @@ export const fetchMovies = (
   request: string
 ): Promise<AxiosResponse> => tmdbApi.get(`/${mediaType}/${request}`);
 
-export const fetchSearchQuery = (query: string): Promise<AxiosResponse> =>
-  tmdbApi.get(`/search/multi?query=${query}`);
+export const fetchSearchQuery = (type: string, query: string): Promise<AxiosResponse> =>
+  tmdbApi.get(`/search/${type}?query=${query}`);

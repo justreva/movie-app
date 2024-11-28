@@ -1,5 +1,5 @@
 import { Movie } from "../../types/filmTypes";
-import MovieCard from "../Card/Card";
+import Card from "../Card/Card";
 import Slider from "../Slider/Slider";
 
 interface MoviesSliderProps {
@@ -11,7 +11,7 @@ const MovieSlider = ({ movies}: MoviesSliderProps) => {
   return (
     <Slider
       items={movies}
-      renderItem={(movie) => <MovieCard movie={movie} />}
+      renderItem={(movie) => <Card movie={movie} />}
     />
   );
 };
