@@ -24,7 +24,7 @@ const CastCard = ({ person }: CastCardProps) => {
       >
         <div className="text-center pt-10 duration-150">
           <h1 className="text-base">{person.name}</h1>
-          <h1 className="border-t border-secondary text-base">
+          <h1 className="border-t border-secondary text-zinc-400 text-base">
             {person.character}
           </h1>
         </div>
