@@ -1,6 +1,6 @@
 import { InformationCircleIcon, XCircleIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
-import { IoIosClose } from "react-icons/io";
+
 
 interface MoreInfoProps {
   children: string;
