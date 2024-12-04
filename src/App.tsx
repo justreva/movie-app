@@ -31,7 +31,7 @@ const App = () => {
             element={<MovieDetails mediaType={"tv"} />}
           />
           <Route path="/person/:id" element={<CastDetails />} />
-          <Route path="/search/multi/:query" element={<List />}/>
+          <Route path="/search/:query" element={<List />}/>
         </Routes>
       </Router>
         

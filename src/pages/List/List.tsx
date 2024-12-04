@@ -1,15 +1,15 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { fetchSearchQuery } from "../../api/tmdb";
 import { useQuery } from "react-query";
 import { Movie, Person } from "../../types/filmTypes";
-import { getYear } from "../../utils/utils";
+import { getYear, useNavigator } from "../../utils/utils";
 import { UserIcon, PhotoIcon } from "@heroicons/react/24/solid";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Loading from "../../components/Loading/Loading";
 
 const List = () => {
   const { query } = useParams<{ query: string }>();
-
+  const navigateToMovie = useNavigator();
   const items = [
     { type: "multi", name: "All" },
     { type: "movie", name: "Movies" },
@@ -19,24 +19,26 @@ const List = () => {
 
   const [activeType, setActiveType] = useState(0);
 
- const resultSearchQuery = useQuery(
-  ["resultSearch", items[activeType].type, query],
-  async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000)); // Задержка 1 секунда
-    return fetchSearchQuery(items[activeType].type, String(query?.replace(" ", "%20")));
-  },
-  { keepPreviousData: true }
-);
+  const resultSearchQuery = useQuery(
+    ["resultSearch", query],
+    () => fetchSearchQuery(String(query?.replace(" ", "%20"))),
+
+    { keepPreviousData: true }
+  );
 
   const resultSearch: Movie[] | Person[] =
-    resultSearchQuery.data?.data.results;
+    resultSearchQuery.data?.data.results.filter((item: Movie) => {
+      if (!(activeType == 0)) {
+        return item.media_type == items[activeType].type;
+      }
+      return item;
+    });
 
-  console.log(resultSearch)
   return (
     <div className="container text-secondary mt-10 flex">
       <div className="w-[85%] block">
         <h1 className="border-b border-secondary pb-1">
-          Showing matches for '{query}'
+          Showing matches for '{query?.replace("-", " ")}'
         </h1>
 
         <div className="mt-3">
@@ -49,6 +51,7 @@ const List = () => {
                   return (
                     <li
                       key={index}
+                      onClick={() => navigateToMovie(item)}
                       className="border-b border-t border-border p-2 flex space-x-3 hover:bg-border/20 duration-150 cursor-pointer"
                     >
                       {item?.poster_path ? (
@@ -85,6 +88,11 @@ const List = () => {
                 if (item.media_type === "person") {
                   return (
                     <li
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        console.log(item)
+                        navigateToMovie(item);
+                      }}
                       key={index}
                       className="border-b border-t border-border p-2 flex space-x-3 hover:bg-border/20 duration-150 cursor-pointer"
                     >
@@ -108,6 +116,7 @@ const List = () => {
                         <ul className="flex space-x-2 mt-3">
                           {item.known_for.map((movie, index) => (
                             <li
+                              onClick={() => navigateToMovie(movie)}
                               key={index}
                               className="text-xs border-description border p-1 rounded-lg shadow-lg hover:bg-zinc-700"
                             >

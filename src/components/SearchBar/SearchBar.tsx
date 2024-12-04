@@ -24,8 +24,8 @@ const SearchBar = () => {
   };
 
   const enterQuery = (query: string) => {
-    const changedQuery = query.replace(" ", "%20");
-    navigate(`/search/multi/${changedQuery}`)
+    const changedQuery = query.replace(" ", "-");
+    navigate(`/search/${changedQuery}`)
   }
   
   return (
@@ -39,6 +39,7 @@ const SearchBar = () => {
         onKeyDown={(e) => {
           if(e.code === "Enter"){
             enterQuery(query)
+            e.target.value = ""
           }
         }}
         type="text"

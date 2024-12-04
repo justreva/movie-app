@@ -1,6 +1,7 @@
+import { useNavigate } from "react-router-dom";
+import { Movie } from "../types/filmTypes";
 
-
-export const getYear = (movie) => {
+export const getYear = (movie: Movie) => {
   if (movie.first_air_date) {
     if (movie.last_air_date) {
       if (
@@ -76,5 +77,19 @@ export const convertDate = (birthday: string, deathday?: string) => {
     )} ${new Date(deathday).getFullYear()}`;
   }
 };
- 
 
+export const useNavigator = () => {
+  const navigate = useNavigate();
+
+  return (movie: Movie) => {
+    if (!movie || !movie.id) {
+      throw new Error("Invalid movie object or missing movie ID");
+    }
+
+    const path = movie.media_type
+      ? `/${movie.media_type}/${movie.id}`
+      : `/movie/${movie.id}`;
+
+    navigate(path);
+  };
+};

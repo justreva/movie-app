@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router-dom";
 import { MediaType, Movie } from "../../types/filmTypes";
+import { ratingStyle, useNavigator } from "../../utils/utils";
+
 import Actions from "../Actions/Actions";
-import { ratingStyle } from "../../utils/utils";
 
 interface MovieCardProps {
   movie: Movie;
@@ -9,16 +9,10 @@ interface MovieCardProps {
 }
 
 const Card = ({ movie }: MovieCardProps) => {
-  const navigate = useNavigate();
-  const goToDetailPage = (movie: MovieCardProps) => {
-    if (!movie.media_type) {
-      return navigate(`/movie/${movie.id}`);
-    }
-    navigate(`/${movie.media_type}/${movie.id}`);
-  };
+  const navigateToMovie = useNavigator();
   return (
     <div
-      onClick={() => goToDetailPage(movie)}
+      onClick={() => navigateToMovie(movie)}
       className={`w-[210px] border border-border rounded-lg shadow-lg overflow-hidden hover:border-secondary duration-150 relative group cursor-pointer`}
     >
       <div>
