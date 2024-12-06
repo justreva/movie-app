@@ -1,4 +1,3 @@
-
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import {
@@ -16,7 +15,7 @@ import { getYear, ratingStyle } from "../../utils/utils";
 import MoreInfo from "../../components/MoreInfo/MoreInfo";
 import { useEffect, useState } from "react";
 import EpisodeSlider from "../../components/EpisodeSlider/EpisodeSlider";
-
+import { PhotoIcon } from "@heroicons/react/24/solid";
 
 interface MovieDetailsProps {
   mediaType: MediaType;
@@ -52,19 +51,16 @@ const MovieDetails = (props: MovieDetailsProps) => {
   };
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const seasonDetails: Episode[] | [] = props.mediaType === "tv" ? useQuery(
-    ["seasonsDetails", id, activeSeason],
-    () => fetchSeasonsDetails(Number(id), Number(activeSeason))
-  ).data?.data.episodes || [] : []
-    
-  
-  
-  
-  
+  const seasonDetails: Episode[] | [] =
+    props.mediaType === "tv"
+      ? useQuery(["seasonsDetails", id, activeSeason], () =>
+          fetchSeasonsDetails(Number(id), Number(activeSeason))
+        ).data?.data.episodes || []
+      : [];
+
   const recommendationMovies: Movie[] | [] =
-  recommendationQuery.data?.data.results;
-  
-  
+    recommendationQuery.data?.data.results || [];
+
   if (movieDetailsQuery.isLoading) return <Loading></Loading>;
   if (movieDetailsQuery.error) return;
   if (!movieDetailsQuery.data) return "Not found";
@@ -72,21 +68,37 @@ const MovieDetails = (props: MovieDetailsProps) => {
     <>
       <div className="h-[450px] left-0 right-0 top-0 relative">
         <div className="overlay-film-backdrop"></div>
-        <img
-          src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
-          alt="backdrop"
-          className="w-full h-full object-cover"
-        />
+        {movie?.backdrop_path ? (
+          <img
+            src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
+            alt="backdrop"
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full bg-border flex justify-center ">
+            <div className="flex items-center animate-pulse">
+              <img src="/logo.svg" alt="" className="w-[100px]" />
+              <h1 className="text-2xl font-bold text-secondary">SVault</h1>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="container mt-2">
         <div className="flex justify-between">
           <div className="poster">
-            <img
-              src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`}
-              alt=""
-              className="max-w-[240px] border border-border shadow-lg rounded-lg "
-            />
+            {movie?.poster_path ? (
+              <img
+                src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`}
+                alt=""
+                className="w-[240px] h-[360px] border border-border shadow-lg rounded-lg"
+              />
+            ) : (
+              <div className="w-[240px] h-[360px] border border-border shadow-lg rounded-lg flex justify-center items-center">
+                <PhotoIcon className="size-44 text-secondary animate-pulse" />
+              </div>
+            )}
+
             <div className="mt-3">
               <Actions />
             </div>
@@ -155,13 +167,16 @@ const MovieDetails = (props: MovieDetailsProps) => {
         )}
 
         <div className="my-10">
-          <h1 className="text-xl font-medium text-secondary border-b pb-1 mb-2">
-            Recommendations
-          </h1>
-          {recommendationMovies ? (
-            <MovieSlider movies={recommendationMovies} />
+          {recommendationMovies.length > 0 ? (
+            <div>
+              <h1 className="text-xl font-medium text-secondary border-b pb-1 mb-2">
+                Recommendations
+              </h1>
+
+              <MovieSlider movies={recommendationMovies} />
+            </div>
           ) : (
-            "Loading"
+            ""
           )}
         </div>
       </div>

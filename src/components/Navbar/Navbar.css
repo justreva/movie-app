@@ -5,7 +5,7 @@
   @apply container flex justify-between items-center;
 }
 .main-nav__content-logo {
-  @apply flex items-center w-[50px] text-xl font-medium cursor-pointer;
+  @apply flex items-center w-[50px] text-xl font-bold cursor-pointer;
 }
 .main-nav__content-menu {
   @apply flex space-x-8 text-lg font-normal;

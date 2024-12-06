@@ -42,7 +42,7 @@ export const ratingStyle = (vote_average: number) => {
   else return "0";
 };
 
-export const convertDate = (birthday: string, deathday?: string) => {
+export const convertDate = (birthday?: string, deathday?: string) => {
   const months = [
     "January",
     "February",

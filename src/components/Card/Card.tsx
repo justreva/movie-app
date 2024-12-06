@@ -1,3 +1,4 @@
+import { PhotoIcon } from "@heroicons/react/24/solid";
 import { MediaType, Movie } from "../../types/filmTypes";
 import { ratingStyle, useNavigator } from "../../utils/utils";
 
@@ -23,7 +24,9 @@ const Card = ({ movie }: MovieCardProps) => {
             className="w-full h-[312px]"
           />
         ) : (
-          <div className="bg-secondary animate-pulse w-full h-full"></div>
+          <div className="w-full h-[312px] flex justify-center items-center"> 
+            <PhotoIcon className="size-44 animate-pulse" />
+          </div>
         )}
       </div>
       <div className="absolute bg-opacity-80 top-0 left-0 ">
