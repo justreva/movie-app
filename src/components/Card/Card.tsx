@@ -2,7 +2,6 @@ import { PhotoIcon } from "@heroicons/react/24/solid";
 import { MediaType, Movie } from "../../types/filmTypes";
 import { ratingStyle, useNavigator } from "../../utils/utils";
 
-import Actions from "../Actions/Actions";
 
 interface MovieCardProps {
   movie: Movie;
@@ -24,16 +23,13 @@ const Card = ({ movie }: MovieCardProps) => {
             className="w-full h-[312px]"
           />
         ) : (
-          <div className="w-full h-[312px] flex justify-center items-center"> 
+          <div className="w-full h-[312px] flex justify-center items-center">
             <PhotoIcon className="size-44 animate-pulse" />
           </div>
         )}
       </div>
       <div className="absolute bg-opacity-80 top-0 left-0 ">
         {ratingStyle(movie.vote_average)}
-      </div>
-      <div className="actions hidden absolute space-x-2 bg-primary p-1 rounded-lg bg-opacity-80 top-[90%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:flex group-focus-within:flex text-secondary">
-        <Actions />
       </div>
     </div>
   );
