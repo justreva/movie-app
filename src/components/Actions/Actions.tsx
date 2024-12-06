@@ -25,7 +25,7 @@ const Actions = () => {
                   currentRating <= (hover ?? rating ?? 0)
                     ? "text-yellow-500"
                     : ""
-                } size-6 text-secondary cursor-pointer`}
+                } size-6 text-secondary cursor-pointer duration-150`}
                 onMouseEnter={() => setHover(currentRating)}
                 onMouseLeave={() => setHover(null)}
               />
@@ -39,9 +39,9 @@ const Actions = () => {
           type="radio"
           name="favorite"
           className="hidden"
-          onClick={() => setFavorite(!favorite)}
+          onClick={() => setFavorite(!favorite) }
         />
-        <HeartIcon className={`${favorite ? "text-active" : "text-secondary "} size-6 cursor-pointer duration-150`} />
+        <HeartIcon className={`${favorite ? "text-active" : "text-secondary "} size-6 cursor-pointer duration-150 hover:text-active`} />
       </label>
     </div>
   );
