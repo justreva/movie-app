@@ -1,9 +1,12 @@
 import { HeartIcon, StarIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 const Actions = () => {
+  
   const [rating, setRating] = useState<number | null>(null);
   const [hover, setHover] = useState<number | null>(null);
   const [favorite, setFavorite] = useState<boolean>(false);
+
+
   return (
     <div className="flex items-center justify-center">
       <div className="mr-2 flex">
