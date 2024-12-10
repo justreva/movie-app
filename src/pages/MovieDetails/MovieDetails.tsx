@@ -36,7 +36,7 @@ const MovieDetails = (props: MovieDetailsProps) => {
     fetchRecommendations(props.mediaType, Number(id))
   );
 
-  const movie: Movie | undefined = movieDetailsQuery.data?.data;
+  const movie: Movie = movieDetailsQuery.data?.data;
   const persons: Person[] | undefined = movieCastQuery.data?.data.cast;
   const [activeSeason, setActiveSeason] = useState<number | null>(null);
 
@@ -70,7 +70,7 @@ const MovieDetails = (props: MovieDetailsProps) => {
         <div className="overlay-film-backdrop"></div>
         {movie?.backdrop_path ? (
           <img
-            src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
+            src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
             alt="backdrop"
             className="w-full h-full object-cover"
           />
@@ -89,7 +89,7 @@ const MovieDetails = (props: MovieDetailsProps) => {
           <div className="poster">
             {movie?.poster_path ? (
               <img
-                src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`}
+                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                 alt=""
                 className="w-[240px] h-[360px] border border-border shadow-lg rounded-lg"
               />
@@ -100,7 +100,7 @@ const MovieDetails = (props: MovieDetailsProps) => {
             )}
 
             <div className="mt-3">
-              <Actions />
+            {movie ? <Actions movie={movie} /> : null}
             </div>
           </div>
 

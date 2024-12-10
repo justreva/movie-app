@@ -5,7 +5,6 @@ interface EpisodeCardProps {
 }
 
 export const EpisodeCard = ({ episode }: EpisodeCardProps) => {
-  console.log(episode);
   return (
     <>
       <div className="w-[320px] h-[178px] overflow-hidden border z-[1] border-border rounded-lg hover:border-secondary duration-150 cursor-pointer shadow-lg relative ">
