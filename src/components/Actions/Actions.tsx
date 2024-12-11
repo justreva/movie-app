@@ -10,22 +10,21 @@ interface ActionsProps {
 
 const Actions = ({ movie }: ActionsProps) => {
   const dispatch = useDispatch();
-  // const rating = useSelector(
-  //   (state: RootState) => state.favorites.rating[movie.id]
-  // );
-  const rating = useSelector(
-    (state: RootState) => state.favorites.rating[movie.id]
-  );
+  const rating = useSelector((state: RootState) => {
+    const ratedMovie = state.movies.ratedMovies.find((ratedMovie) => ratedMovie.id === movie.id);
+    return ratedMovie ? ratedMovie.rating : 0; 
+  })
+
+
   const [hover, setHover] = useState<number | null>(null);
   const isFavorite = useSelector((state: RootState) =>
-    state.favorites.favorites.some((fav) => fav.id == movie.id)
+    state.movies.favorites.some((fav) => fav.id == movie.id)
   );
-  console.log(isFavorite);
   const handleFavorite = () => {
     dispatch(toggleFavorite(movie));
   };
-  const handleRating =(newRating: number) => {
-    dispatch(setRating({movieId: movie.id , rating: newRating}))
+  const handleRating =(movie: Movie, rating: number) => {
+    dispatch(setRating({movie, rating}))
   }
 
   return (
@@ -41,7 +40,7 @@ const Actions = ({ movie }: ActionsProps) => {
                 className="hidden"
                 onClick={(e) => {
                   e.stopPropagation();
-                  handleRating(currentRating);
+                  handleRating(movie,currentRating);
                 }}
               />
               <StarIcon

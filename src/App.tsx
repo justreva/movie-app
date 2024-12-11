@@ -9,7 +9,7 @@ import "./index.css";
 import Movies from "./pages/Movies/Movies";
 import List from "./pages/List/List";
 import Error from "./components/Error/Error";
-import Favorites from "./pages/Favorites/Favorites";
+import Profile from "./pages/Profile/Profile";
 
 const App = () => {
   return (
@@ -21,7 +21,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/movies" element={<Movies mediaType={"movie"}/>} />
           <Route path="/serials" element={<Movies mediaType={"tv"}/>} />
-          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<Error />} />
           <Route
             path="/movie/:id"

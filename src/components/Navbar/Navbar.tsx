@@ -19,7 +19,7 @@ const Navbar = () => {
             <Link to="/serials">Serials</Link>
           </li>
           <li className="main-nav__content-elem">
-            <Link to="/favorites">Favorites</Link>
+            <Link to="/profile">Profile</Link>
           </li>
         </ul>
 

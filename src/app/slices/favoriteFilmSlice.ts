@@ -2,35 +2,59 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Movie } from "../../types/filmTypes";
 
 interface FavoritesState {
-  rating: Record<number, number>;
   favorites: Movie[];
+  ratedMovies: (Movie & { rating: number })[];
 }
 
 const initialState: FavoritesState = {
-  rating: {},
   favorites: [],
+  ratedMovies: [],
 };
 
 const favoriteSlice = createSlice({
-  name: 'movie',
+  name: "movie",
   initialState,
   reducers: {
-    setRating: (state, action: PayloadAction<{ movieId: number; rating: number }>) => {
-      state.rating[action.payload.movieId] = action.payload.rating;
-    },
-    toggleFavorite: (state, action: PayloadAction<Movie>) => {
-      const existingIndex = state.favorites.findIndex(
-        (movie) => movie.id === action.payload.id
+    setRating: (
+      state,
+      action: PayloadAction<{ movie: Movie; rating: number }>
+    ) => {
+      const { movie, rating } = action.payload;
+      const existingIndex = state.ratedMovies.findIndex(
+        (ratedMovie) => ratedMovie.id === movie.id
       );
       if (existingIndex !== -1) {
-        // Если фильм уже в избранном, удаляем его
+        state.ratedMovies[existingIndex].rating = rating;
+      } else {
+        state.ratedMovies.push({ ...movie, rating });
+      }
+    },
+    toggleFavorite: (state, action: PayloadAction<Movie>) => {
+      const movie = action.payload;
+      const existingIndex = state.favorites.findIndex(
+        (favMovie) => favMovie.id === movie.id
+      );
+      if (existingIndex !== -1) {
         state.favorites.splice(existingIndex, 1);
       } else {
-        // Если фильма нет в избранном, добавляем его
-        state.favorites.push(action.payload);
+        const ratedMovie = state.ratedMovies.find(
+          (ratedMovie) => ratedMovie.id === movie.id
+        );
+        const movieWithRating = ratedMovie
+          ? { ...movie, rating: ratedMovie.rating }
+          : movie;
+        state.favorites.push(movieWithRating);
       }
+    },
+    deleteMovie: (state, action: PayloadAction<number>) => {
+      state.favorites = state.favorites.filter(
+        (movie) => movie.id !== action.payload
+      );
+      state.ratedMovies = state.ratedMovies.filter(
+        (movie) => movie.id !== action.payload
+      );
     },
   },
 });
-export const { toggleFavorite, setRating } = favoriteSlice.actions;
+export const { toggleFavorite, setRating, deleteMovie } = favoriteSlice.actions;
 export default favoriteSlice.reducer;
