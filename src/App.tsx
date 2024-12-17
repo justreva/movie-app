@@ -34,8 +34,8 @@ const App = () => {
             <Route path="/search/:query" element={<List />} />
           </Routes>
         </div>
-      </Router>
       <div className="layout-footer"><Footer /></div>
+      </Router>
       
     </div>
   );
