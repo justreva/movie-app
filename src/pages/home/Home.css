@@ -3,7 +3,7 @@
 }
 
 .title {
-  @apply text-center text-3xl text-center mt-10 mb-10 text-secondary ;
+  @apply text-center text-3xl mt-10 mb-10 text-secondary ;
 }
 
 

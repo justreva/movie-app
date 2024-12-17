@@ -1,14 +1,14 @@
 import "./Navbar.css";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
+import Logo from "../Logo/Logo";
 
 const Navbar = () => {
   return (
     <nav className="main-nav">
       <div className="main-nav__content">
         <Link to={"/"} className="main-nav__content-logo">
-          <img src="/logo.svg" alt="logo" />
-          <span>SVault</span>
+          <Logo />
         </Link>
 
         <ul className="main-nav__content-menu">

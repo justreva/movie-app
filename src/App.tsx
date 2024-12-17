@@ -10,6 +10,7 @@ import Movies from "./pages/Movies/Movies";
 import List from "./pages/List/List";
 import Error from "./components/Error/Error";
 import Profile from "./pages/Profile/Profile";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   return (
@@ -34,8 +35,8 @@ const App = () => {
           <Route path="/person/:id" element={<CastDetails />} />
           <Route path="/search/:query" element={<List />}/>
         </Routes>
+        <Footer />
       </Router>
-        
     </>
   );
 };
