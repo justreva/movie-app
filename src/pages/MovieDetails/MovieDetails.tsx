@@ -1,5 +1,7 @@
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 import {
   fetchMovieCast,
   fetchMovieDetails,
@@ -16,6 +18,8 @@ import MoreInfo from "../../components/MoreInfo/MoreInfo";
 import { useEffect, useState } from "react";
 import EpisodeSlider from "../../components/EpisodeSlider/EpisodeSlider";
 import { PhotoIcon } from "@heroicons/react/24/solid";
+import Logo from "../../components/Logo/Logo";
+
 
 interface MovieDetailsProps {
   mediaType: MediaType;
@@ -75,10 +79,9 @@ const MovieDetails = (props: MovieDetailsProps) => {
             className="w-full h-full object-cover"
           />
         ) : (
-          <div className="w-full h-full bg-border flex justify-center ">
+          <div className="w-full h-[350px] bg-border flex justify-center ">
             <div className="flex items-center animate-pulse">
-              <img src="/logo.svg" alt="" className="w-[100px]" />
-              <h1 className="text-2xl font-bold text-secondary">SVault</h1>
+              <Logo />
             </div>
           </div>
         )}
@@ -100,7 +103,7 @@ const MovieDetails = (props: MovieDetailsProps) => {
             )}
 
             <div className="mt-3">
-            {movie ? <Actions movie={movie} /> : null}
+              {movie ? <Actions movie={movie} /> : null}
             </div>
           </div>
 
@@ -132,6 +135,7 @@ const MovieDetails = (props: MovieDetailsProps) => {
             <ul className="mt-[10px] space-y-2">
               {movie?.genres.map((genre) => (
                 <li
+              
                   className="text-secondary text-center py-1 px-2 rounded-lg border border-border shadow-lg"
                   key={genre.id}
                 >
@@ -143,21 +147,41 @@ const MovieDetails = (props: MovieDetailsProps) => {
         </div>
         {movie?.seasons ? (
           <div className="mt-10">
-            <ul className="flex space-x-5 pb-1 text-xl font-medium border-b border-secondary text-description">
-              {movie.seasons.map((season) => (
-                <li
-                  key={season.id}
-                  className={`${
-                    activeSeason === season.season_number
-                      ? "text-secondary"
-                      : ""
-                  } hover:text-secondary cursor-pointer delay-50`}
-                  onClick={() => handleClick(season.season_number)}
-                >
-                  {season.name}
-                </li>
-              ))}
-            </ul>
+            <div className="flex pb-1 text-xl font-medium border-b border-secondary text-description">
+              {movie.seasons.length > 6 ? (
+                <Swiper spaceBetween={100} slidesPerView={7}>
+                  {movie.seasons.map((season) => (
+                    <SwiperSlide>
+                      <div
+                        
+                        className={`${
+                          activeSeason === season.season_number
+                            ? "text-secondary"
+                            : ""
+                        } hover:text-secondary cursor-pointer delay-50 w-[150px]`}
+                        onClick={() => handleClick(season.season_number)}
+                      >
+                        {season.name}
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              ) : (
+                movie.seasons.map((season) => (
+                  <div
+                    
+                    className={`${
+                      activeSeason === season.season_number
+                        ? "text-secondary"
+                        : ""
+                    } hover:text-secondary cursor-pointer delay-50`}
+                    onClick={() => handleClick(season.season_number)}
+                  >
+                    {season.name}
+                  </div>
+                ))
+              )}
+            </div>
             <div className="mt-2 flex">
               <EpisodeSlider season={seasonDetails} />
             </div>

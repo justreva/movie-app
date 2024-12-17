@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { fetchSearchQuery } from "../../api/tmdb";
 import { useQuery } from "react-query";
 import { Movie, Person } from "../../types/filmTypes";
@@ -42,7 +42,7 @@ const List = () => {
         </h1>
 
         <div className="mt-3">
-          <ul className="space-y-3">
+          <ul className="">
             {resultSearchQuery.isLoading ? (
               <Loading></Loading>
             ) : (
@@ -52,7 +52,7 @@ const List = () => {
                     <li
                       key={index}
                       onClick={() => navigateToMovie(item)}
-                      className="border-b border-t border-border p-2 flex space-x-3 hover:bg-border/20 duration-150 cursor-pointer"
+                      className="border-b border-border p-2 flex space-x-3 hover:bg-border/20 duration-150 cursor-pointer"
                     >
                       {item?.poster_path ? (
                         <img

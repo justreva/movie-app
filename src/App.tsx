@@ -14,7 +14,7 @@ import Footer from "./components/Footer/Footer";
 
 const App = () => {
   return (
-    <>
+    <div className="layout">
       <Router>
         <Navbar />
 
@@ -35,9 +35,9 @@ const App = () => {
           <Route path="/person/:id" element={<CastDetails />} />
           <Route path="/search/:query" element={<List />}/>
         </Routes>
-        <Footer />
       </Router>
-    </>
+        <Footer />
+    </div>
   );
 };
 

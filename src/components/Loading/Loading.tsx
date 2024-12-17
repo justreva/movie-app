@@ -2,7 +2,7 @@ import { FaSpinner } from "react-icons/fa";
 
 const Loading = () => {
   return (
-    <div className="flex justify-center mt-[300px]">
+    <div className="flex justify-center mt-[300px] h-[100vh]a">
       <FaSpinner className="animate-spin text-active" size={48}/ >
       <div className="text-secondary text-5xl">Loading</div>
     </div>
