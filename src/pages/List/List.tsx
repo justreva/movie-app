@@ -32,7 +32,7 @@ const List = () => {
         return item.media_type == items[activeType].type;
       }
       return item;
-    });
+    }) || [];
 
   return (
     <div className="container text-secondary mt-10 flex">

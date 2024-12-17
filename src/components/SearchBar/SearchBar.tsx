@@ -39,7 +39,7 @@ const SearchBar = () => {
         onKeyDown={(e) => {
           if(e.code === "Enter"){
             enterQuery(query)
-            e.target.value = ""
+            e.currentTarget.value = ""
           }
         }}
         type="text"

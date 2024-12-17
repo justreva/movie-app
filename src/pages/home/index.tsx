@@ -3,7 +3,7 @@ import {
   fetchTrendingMovies,
   fetchTrendingSeries,
 } from "../../api/tmdb";
-import "./Home.css";
+
 
 import Loading from "../../components/Loading/Loading";
 import Error from "../../components/Error/Error";
@@ -30,21 +30,21 @@ const Home = () => {
   const handleSelectChangeSerial = (value: string) => {
     setSerialTimeWindow(value);
   };
-  const trendingMovies: Movie[] | [] = trendingMoviesQuery.data?.data.results;
-  const trendingSerials: Movie[] | [] = trendingSerialsQuery.data?.data.results;
+  const trendingMovies = trendingMoviesQuery.data?.data.results || [];
+  const trendingSerials: Movie[] = trendingSerialsQuery.data?.data.results || [];
 
   if (trendingMoviesQuery.isLoading || trendingSerialsQuery.isLoading)
     return <Loading></Loading>;
   if (trendingMoviesQuery.isError || trendingSerialsQuery.isError)
     return <Error></Error>;
   return (
-    <main className="content container">
-      <div className="title">
+    <main className="pt-[30px] container">
+      <div className="text-center text-3xl mt-10 mb-10 text-secondary">
         Welcome back, <i>User</i>. Here’s what you can watch…
       </div>
 
       <div className="trending">
-        <div className="trending_title flex justify-between">
+        <div className="text-secondary border-b border-secondary text-xl pb-1 mt-10 flex justify-between">
           <h1>Trending movies</h1>
           <select
             onChange={(e) => handleSelectChangeMovie(e.target.value)}
@@ -55,11 +55,11 @@ const Home = () => {
           </select>
         </div>
         <div className="mt-2">
-          <MovieSlider movies={trendingMovies} />
+          <MovieSlider movies={trendingMovies} media_type="movie"/>
         </div>
 
         <div>
-          <div className="trending_title mt-10 flex justify-between">
+          <div className="text-secondary border-b border-secondary text-xl pb-1 mt-10 flex justify-between">
             <h1>Trending serials</h1>
             <select
             onChange={(e) => handleSelectChangeSerial(e.target.value)}
@@ -70,7 +70,7 @@ const Home = () => {
           </select>
           </div>
           <div className="mt-2">
-            <MovieSlider movies={trendingSerials} />
+            <MovieSlider movies={trendingSerials} media_type="movie"/>
           </div>
         </div>
       </div>

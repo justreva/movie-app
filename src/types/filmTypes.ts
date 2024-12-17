@@ -29,6 +29,11 @@ export interface Movie {
   first_air_date?: string;
   last_air_date?: string;
 }
+export interface ApiResponse<T,> {
+ 
+    results: T[];
+
+}
 
 export interface Person {
   id: number;
@@ -39,6 +44,7 @@ export interface Person {
   birthday?: string;
   deathday?: string;
   known_for_department: string;
+  media_type?: string;
 }
 
 export interface Episode {
@@ -46,4 +52,5 @@ export interface Episode {
   still_path: string;
   runtime: number;
   season_number: number;
+  episode_number: number;
 }

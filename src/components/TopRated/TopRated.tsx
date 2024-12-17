@@ -1,18 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import { MediaType, Movie } from "../../types/filmTypes";
+import { Movie } from "../../types/filmTypes";
 import { getYear, ratingStyle } from "../../utils/utils";
 interface topRatedProps {
   movie: Movie;
 }
-interface detailsProps {
-  movie: Movie;
-  media_type: MediaType;
-  first_air_date: string;
-  id: string;
-}
+
 const TopRated = ({ movie }: topRatedProps) => {
   const navigate = useNavigate();
-  const goToDetailPage = (movie: detailsProps) => {
+  const goToDetailPage = (movie: Movie) => {
     if (!movie.first_air_date) {
       return navigate(`/movie/${movie.id}`);
     }

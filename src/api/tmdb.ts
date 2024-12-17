@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { MediaType, Movie, Person } from "../types/filmTypes";
+import { ApiResponse, MediaType, Movie, Person } from "../types/filmTypes";
 
 const BASE_API_URL = "https://api.themoviedb.org/3/";
 export const tmdbApi = axios.create({
@@ -43,7 +43,7 @@ export const fetchMoviesWithPerson = (
 
 export const fetchTrendingMovies = (
   time_window: string
-): Promise<AxiosResponse<Movie[]>> =>
+): Promise<ApiResponse<Movie[]>> =>
   tmdbApi.get(`/trending/movie/${time_window}`);
 
 export const fetchTrendingSeries = (
