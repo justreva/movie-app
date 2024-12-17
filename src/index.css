@@ -33,17 +33,24 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
-select option{
-  @apply bg-primary  text-secondary 
-}
 
-.active_season{
-  @apply text-secondary
-}
-.layout{
-  height: 100%;
+
+
+.layout {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  height: 100vh; /* Высота равна высоте экрана */
+}
 
+.layout-header {
+  flex: 0 0 auto; /* Фиксированная высота для навигации */
+}
+
+.layout-body {
+  flex: 1 0 auto; /* Заполняет оставшееся пространство */
+  overflow-y: auto; /* Добавляет скроллинг, если содержимое превышает высоту */
+}
+
+.layout-footer {
+  flex: 0 0 auto; /* Фиксированная высота для футера */
 }

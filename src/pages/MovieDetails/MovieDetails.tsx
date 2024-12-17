@@ -147,11 +147,11 @@ const MovieDetails = (props: MovieDetailsProps) => {
         </div>
         {movie?.seasons ? (
           <div className="mt-10">
-            <div className="flex pb-1 text-xl font-medium border-b border-secondary text-description">
+            <div className="flex pb-1 text-xl space-x-4 font-medium border-b border-secondary text-description">
               {movie.seasons.length > 6 ? (
                 <Swiper spaceBetween={100} slidesPerView={7}>
                   {movie.seasons.map((season) => (
-                    <SwiperSlide>
+                    <SwiperSlide key={season.id}>
                       <div
                         
                         className={`${

@@ -16,27 +16,27 @@ const App = () => {
   return (
     <div className="layout">
       <Router>
-        <Navbar />
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies mediaType={"movie"}/>} />
-          <Route path="/serials" element={<Movies mediaType={"tv"}/>} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="*" element={<Error />} />
-          <Route
-            path="/movie/:id"
-            element={<MovieDetails mediaType={"movie"} />}
-          />
-          <Route
-            path="/tv/:id"
-            element={<MovieDetails mediaType={"tv"} />}
-          />
-          <Route path="/person/:id" element={<CastDetails />} />
-          <Route path="/search/:query" element={<List />}/>
-        </Routes>
+        <div className="layout-header"><Navbar /></div>
+        
+        <div className="layout-body">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/movies" element={<Movies mediaType={"movie"} />} />
+            <Route path="/serials" element={<Movies mediaType={"tv"} />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="*" element={<Error />} />
+            <Route
+              path="/movie/:id"
+              element={<MovieDetails mediaType={"movie"} />}
+            />
+            <Route path="/tv/:id" element={<MovieDetails mediaType={"tv"} />} />
+            <Route path="/person/:id" element={<CastDetails />} />
+            <Route path="/search/:query" element={<List />} />
+          </Routes>
+        </div>
       </Router>
-        <Footer />
+      <div className="layout-footer"><Footer /></div>
+      
     </div>
   );
 };
