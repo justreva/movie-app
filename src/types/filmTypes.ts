@@ -45,6 +45,7 @@ export interface Person {
   deathday?: string;
   known_for_department: string;
   media_type?: string;
+  known_for: Movie[]
 }
 
 export interface Episode {

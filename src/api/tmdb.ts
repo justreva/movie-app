@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { ApiResponse, MediaType, Movie, Person } from "../types/filmTypes";
+import { MediaType, Movie, Person } from "../types/filmTypes";
 
 const BASE_API_URL = "https://api.themoviedb.org/3/";
 export const tmdbApi = axios.create({
@@ -43,12 +43,19 @@ export const fetchMoviesWithPerson = (
 
 export const fetchTrendingMovies = (
   time_window: string
-): Promise<ApiResponse<Movie[]>> =>
-  tmdbApi.get(`/trending/movie/${time_window}`);
+): Promise<
+  AxiosResponse<{
+    results: Movie[];
+  }>
+> => tmdbApi.get(`/trending/movie/${time_window}`);
 
 export const fetchTrendingSeries = (
   time_window: string
-): Promise<AxiosResponse> => tmdbApi.get(`/trending/tv/${time_window}`);
+): Promise<
+  AxiosResponse<{
+    results: Movie[];
+  }>
+> => tmdbApi.get(`/trending/tv/${time_window}`);
 
 export const fetchSeasonsDetails = (
   series_id: number,
@@ -61,5 +68,4 @@ export const fetchMovies = (
   request: string
 ): Promise<AxiosResponse> => tmdbApi.get(`/${mediaType}/${request}`);
 
-export const fetchSearchQuery = (query: string): Promise<AxiosResponse> =>
-  tmdbApi.get(`/search/multi?query=${query}`);
+export const fetchSearchQuery = (query: string): Promise<AxiosResponse> => tmdbApi.get(`/search/multi?query=${query}`);

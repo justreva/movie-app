@@ -25,7 +25,7 @@ const Profile = () => {
   return (
     <div className="container text-secondary mt-10">
       <h1 className="text-xl font-medium border-b border-secondary pb-1">
-        Your favorites
+        Your activity
       </h1>
 
       <ul className="mt-2">

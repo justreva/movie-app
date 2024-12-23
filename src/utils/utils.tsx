@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Movie } from "../types/filmTypes";
+import { Movie, Person } from "../types/filmTypes";
 
 export const getYear = (movie: Movie) => {
   if (movie.first_air_date) {
@@ -42,7 +42,7 @@ export const ratingStyle = (vote_average: number) => {
   else return "0";
 };
 
-export const convertDate = (birthday?: string, deathday?: string) => {
+export const convertDate = (birthday: string, deathday?: string) => {
   const months = [
     "January",
     "February",
@@ -81,7 +81,7 @@ export const convertDate = (birthday?: string, deathday?: string) => {
 export const useNavigator = () => {
   const navigate = useNavigate();
 
-  return (movie: Movie) => {
+  return (movie: Movie | Person) => {
     if (!movie || !movie.id) {
       throw new Error("Invalid movie object or missing movie ID");
     }
@@ -93,3 +93,11 @@ export const useNavigator = () => {
     navigate(path);
   };
 };
+
+export function isMovie(item: Movie | Person): item is Movie {
+  return item.media_type === "movie" || item.media_type === "tv";
+}
+
+export function isPerson(item: Movie | Person): item is Person {
+  return item.media_type === "person";
+}
