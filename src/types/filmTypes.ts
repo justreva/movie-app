@@ -21,6 +21,7 @@ export interface Movie {
   backdrop_path: string | null;
   release_date: string;
   vote_average: number;
+  rating: number;
   tagline: string;
   status: string;
   genres: Genre[];
@@ -41,7 +42,7 @@ export interface Person {
   profile_path: string;
   character?: string;
   biography?: string;
-  birthday?: string;
+  birthday: string;
   deathday?: string;
   known_for_department: string;
   media_type?: string;

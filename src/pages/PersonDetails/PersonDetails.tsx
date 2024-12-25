@@ -16,7 +16,7 @@ const PersonDetails = () => {
     fetchMoviesWithPerson(Number(id))
   );
 
-  const person: Person | undefined = personDetailsQuery.data?.data;
+  const person: Person = personDetailsQuery.data?.data;
   const movies = moviesWithPersonQuery.data?.data.cast.concat(
     moviesWithPersonQuery.data?.data.crew
   );
@@ -36,7 +36,7 @@ const PersonDetails = () => {
 
           <div className="mt-4 grid grid-cols-5 gap-3">
             {movies.map((movie: Movie) => (
-              <Card key={movie.id} movie={movie} />
+              <Card key={movie.id} movie={movie} media_type="movie"/>
             ))}
           </div>
         </div>

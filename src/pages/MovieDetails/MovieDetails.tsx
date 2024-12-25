@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -40,8 +41,8 @@ const MovieDetails = (props: MovieDetailsProps) => {
     fetchRecommendations(props.mediaType, Number(id))
   );
 
-  const movie: Movie = movieDetailsQuery.data?.data;
-  const persons: Person[] | undefined = movieCastQuery.data?.data.cast;
+  const movie: Movie = movieDetailsQuery.data?.data ;
+  const persons: Person[] = movieCastQuery.data?.data.cast || [];
   const [activeSeason, setActiveSeason] = useState<number | null>(null);
 
   useEffect(() => {
@@ -54,15 +55,14 @@ const MovieDetails = (props: MovieDetailsProps) => {
     setActiveSeason(index);
   };
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const seasonDetails: Episode[] | [] =
+  const seasonDetails: Episode[] =
     props.mediaType === "tv"
       ? useQuery(["seasonsDetails", id, activeSeason], () =>
           fetchSeasonsDetails(Number(id), Number(activeSeason))
         ).data?.data.episodes || []
       : [];
 
-  const recommendationMovies: Movie[] | [] =
+  const recommendationMovies: Movie[] =
     recommendationQuery.data?.data.results || [];
 
   if (movieDetailsQuery.isLoading) return <Loading></Loading>;
@@ -197,7 +197,7 @@ const MovieDetails = (props: MovieDetailsProps) => {
                 Recommendations
               </h1>
 
-              <MovieSlider movies={recommendationMovies} />
+              <MovieSlider movies={recommendationMovies} media_type="movie" />
             </div>
           ) : (
             ""

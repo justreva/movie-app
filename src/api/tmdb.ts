@@ -18,27 +18,27 @@ export const fetchMoviesInTheaters = () => tmdbApi.get("/movie/now_playing");
 export const fetchMovieDetails = (
   mediaType: MediaType,
   id: number
-): Promise<AxiosResponse<Movie>> => tmdbApi.get(`/${mediaType}/${id}`);
+): Promise<AxiosResponse> => tmdbApi.get(`/${mediaType}/${id}`);
 
 export const fetchMovieCast = (
   mediaType: MediaType,
   id: number
-): Promise<AxiosResponse<Person>> =>
+): Promise<AxiosResponse> =>
   tmdbApi.get(`/${mediaType}/${id}/credits?language=en-US`);
 
 export const fetchRecommendations = (
   mediaType: MediaType,
   id: number
-): Promise<AxiosResponse<Movie>> =>
+): Promise<AxiosResponse> =>
   tmdbApi.get(`/${mediaType}/${id}/recommendations`);
 
 export const fetchPersonDetails = (
   id: number
-): Promise<AxiosResponse<Person>> => tmdbApi.get(`/person/${id}`);
+): Promise<AxiosResponse> => tmdbApi.get(`/person/${id}`);
 
 export const fetchMoviesWithPerson = (
   id: number
-): Promise<AxiosResponse<Movie>> =>
+): Promise<AxiosResponse> =>
   tmdbApi.get(`/person/${id}/combined_credits`);
 
 export const fetchTrendingMovies = (

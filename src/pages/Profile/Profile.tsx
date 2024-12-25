@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { HeartIcon, StarIcon, TrashIcon } from "@heroicons/react/24/solid";
 import { getYear, useNavigator } from "../../utils/utils";
 import { deleteMovie } from "../../app/slices/favoriteFilmSlice";
+import { Movie } from "../../types/filmTypes";
 
 
 const Profile = () => {
@@ -10,8 +11,8 @@ const Profile = () => {
   const dispatch = useDispatch()
   const favorites = useSelector((state: RootState) => state.movies.favorites);
   const rating = useSelector((state: RootState) => state.movies.ratedMovies);
-  const allMovies = [...favorites, ...rating].reduce((acc, movie) => {
-    if (!acc.some((item) => item.id === movie.id)) {
+  const allMovies = [...favorites, ...rating].reduce((acc: Movie[], movie: Movie) => {
+    if (!acc.some((item: Movie) => item.id === movie.id)) {
       acc.push(movie);
     }
     return acc;
@@ -30,7 +31,7 @@ const Profile = () => {
 
       <ul className="mt-2">
         {allMovies.length > 0
-          ? allMovies.map((fav) => (
+          ? allMovies.map((fav: Movie) => (
               <li
                 onClick={()=> navigateToMovie(fav)}
                 className="p-3 hover:bg-border duration-150 flex cursor-pointer justify-between items-center border-b border-border"
