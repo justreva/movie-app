@@ -1,16 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
 
-import Home from "./pages/Home";
-import MovieDetails from "./pages/MovieDetails/MovieDetails";
-import CastDetails from "./pages/PersonDetails/PersonDetails";
+import Home from "./pages/Home/Home.tsx";
+import Movies from "./pages/Movies/Movies";
+import Profile from "./pages/Profile/Profile.tsx";
+import List from "./pages/List/List.tsx";
+import MovieDetails from "./pages/MovieDetails/MovieDetails.tsx";
+import CastDetails from "./pages/PersonDetails/PersonDetails.tsx";
+import Error from "./components/Error/Error.tsx";
+
+import Navbar from "./components/Navbar/Navbar.tsx";
+import Footer from "./components/Footer/Footer.tsx";
 
 import "./index.css";
-import Movies from "./pages/Movies/Movies";
-import List from "./pages/List/List";
-import Error from "./components/Error/Error";
-import Profile from "./pages/Profile/Profile";
-import Footer from "./components/Footer/Footer";
 
 const App = () => {
   return (
