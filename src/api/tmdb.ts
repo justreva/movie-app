@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { MediaType, Movie} from "../types/filmTypes";
 
+const apiToken = import.meta.env.VITE_API_TOKEN;
 const BASE_API_URL = "https://api.themoviedb.org/3/";
 export const tmdbApi = axios.create({
   baseURL: BASE_API_URL,
@@ -9,10 +10,10 @@ export const tmdbApi = axios.create({
   },
   headers: {
     accept: "application/json",
-    Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
+    Authorization: `Bearer ${apiToken}`,
   },
 });
-
+console.log(apiToken)
 export const fetchMoviesInTheaters = () => tmdbApi.get("/movie/now_playing");
 
 export const fetchMovieDetails = (
