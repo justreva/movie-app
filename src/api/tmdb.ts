@@ -13,7 +13,7 @@ export const tmdbApi = axios.create({
     Authorization: `Bearer ${apiToken}`,
   },
 });
-console.log(apiToken)
+
 export const fetchMoviesInTheaters = () => tmdbApi.get("/movie/now_playing");
 
 export const fetchMovieDetails = (
