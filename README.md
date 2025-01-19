@@ -7,7 +7,7 @@
 
 ## Live Demo
 
-[SVault](movie-app-delta-beryl.vercel.app)
+[SVault](https://movie-app-delta-beryl.vercel.app/)
 
 ## Features
 
@@ -47,3 +47,7 @@ VITE_API_TOKEN = Get token on [TMDB](https://www.themoviedb.org/settings/api)
 ```
   npm run dev
 ```
+
+
+
+## If you are from Russia, then use VPN. TMDB does not work in Russia
