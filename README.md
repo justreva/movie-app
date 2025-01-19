@@ -50,4 +50,4 @@ VITE_API_TOKEN = Get token on [TMDB](https://www.themoviedb.org/settings/api)
 
 
 
-## If you are from Russia, then use VPN. TMDB does not work in Russia
+## If you are from Russia use VPN. TMDB does not work in Russia
