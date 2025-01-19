@@ -5,10 +5,10 @@ import { getYear, isMovie, isPerson, useNavigator } from "../../utils/utils";
 interface SearchComponentProps {
 	data: Movie[] | Person[]
 }
-const SearchComponent = ({ data }:SearchComponentProps) => {
+const SearchComponent = ({ data }: SearchComponentProps) => {
   const navigateToMovie = useNavigator();
-  const movies = data.filter((movie) => isMovie(movie)) || [];
-  const persons = data.filter((person) => isPerson(person)) || [];
+  const movies = data.filter((movie) => isMovie(movie)) || [] as Movie[];
+  const persons = data.filter((person) => isPerson(person)) || [] as Person[];
 
   return (
     <div>
@@ -19,9 +19,9 @@ const SearchComponent = ({ data }:SearchComponentProps) => {
               onClick={() => navigateToMovie(movie)}
               className="border-b border-border p-2 flex space-x-3 hover:bg-border/20 duration-150 cursor-pointer"
             >
-              {movie?.poster_path ? (
+              {movie.poster_path ? (
                 <img
-                  src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`}
+                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                   className="w-[150px] h-[225px] border border-border rounded-lg"
                   alt=""
                 />
