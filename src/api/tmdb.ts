@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { MediaType, Movie, Person } from "../types/filmTypes";
+import { MediaType, Movie} from "../types/filmTypes";
 
 const BASE_API_URL = "https://api.themoviedb.org/3/";
 export const tmdbApi = axios.create({
