@@ -7,8 +7,8 @@ interface SearchComponentProps {
 }
 const SearchComponent = ({ data }:SearchComponentProps) => {
   const navigateToMovie = useNavigator();
-  const movies: Movie[] = data.filter((movie) => isMovie(movie)) || [];
-  const persons: Person[] = data.filter((person) => isPerson(person)) || [];
+  const movies = data.filter((movie) => isMovie(movie)) || [];
+  const persons = data.filter((person) => isPerson(person)) || [];
 
   return (
     <div>
